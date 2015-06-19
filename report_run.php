@@ -82,8 +82,8 @@
 
 			$stmt = $db->insert("ccg_ttr_results", $columns);
 
-			$report = $ccg->get_ttr_report($stmt);
-			//$report = $ccg->get_ttr_report(30);
+			$report = $ccg->get_ttr_report_by_id($stmt);
+			//$report = $ccg->get_ttr_report_by_id(30);
 			$run_tstamp = strtotime($report[0]['run_datetime']);
 			switch ($tzone) {
 				case "PT":

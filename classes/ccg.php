@@ -76,7 +76,7 @@ class CCG {
 		return $valid_user;
 	}
 
-	public function get_ttr_report($id) {
+	public function get_ttr_report_by_id($id) {
 		$db = new medoo();
 		$run_report = $db->select(
 			"ccg_ttr_results",
@@ -104,7 +104,50 @@ class CCG {
 		return (!empty($run_report)) ? $run_report : null;
 	}
 
-	public function get_ttr_reports($run_date, $run_time = null, $battle = null) {
+	public function get_ttr_reports_by_month($run_month, $battle = null) {
+		$date = explode("/", $run_month);
+		$month = $date[0];
+		$endmonth = sprintf('%02d', (intval($month, 10) + 1));
+		$year = $date[1];
+		$endyear = ($month == '12') ? intval($year) + 1 : $year;
+
+		$where = array();
+		$where["ccg_ttr_results.run_datetime[<>]"] = array($year.'-'.$month.'-01 00:00:00', $endyear.'-'.$endmonth.'-01 00:00:00');
+		if (!empty($battle)) {
+			$where["ccg_ttr_results.battle"] = $battle;
+		}
+
+		$db = new medoo();
+		$run_report = $db->select(
+			"ccg_ttr_results",
+			array("[><]ccg_users"=>array("ccg_id"=>"ccg_id")),
+			array("ccg_ttr_results.result_id",
+				  "ccg_ttr_results.battle",
+				  "ccg_ttr_results.run_datetime",
+				  "ccg_ttr_results.toons_loaded",
+				  "ccg_ttr_results.toons_danced",
+				  "ccg_ttr_results.notes",
+				  "ccg_ttr_results.toon_1",
+				  "ccg_ttr_results.toon_2",
+				  "ccg_ttr_results.toon_3",
+				  "ccg_ttr_results.toon_4",
+				  "ccg_ttr_results.toon_5",
+				  "ccg_ttr_results.toon_6",
+				  "ccg_ttr_results.toon_7",
+				  "ccg_ttr_results.toon_8",
+				  "ccg_ttr_results.reward",
+				  "ccg_users.mcf_username"
+			),
+			array(
+				"AND"=>$where,
+				"ORDER"=>"ccg_ttr_results.run_datetime DESC"
+				)
+		);
+
+		return (!empty($run_report)) ? $run_report : null;
+	}
+
+	public function get_ttr_reports_by_date($run_date, $run_time = null, $battle = null) {
 		if (!empty($run_time)) {
 			$run_datetime = $run_date.' '.$run_time;
 			$run_datetime = strtotime($run_datetime);
@@ -149,6 +192,7 @@ class CCG {
 				"ORDER"=>"ccg_ttr_results.run_datetime DESC"
 				)
 		);
+		
 		return (!empty($run_report)) ? $run_report : null;
 	}
 

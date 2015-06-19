@@ -2,12 +2,18 @@
 	require_once('includes/config.php');
 
 	$html = '';
-	$run_date = $_POST['date'];
+	$type = $_POST['type'];
+	$run_month = (!empty($_POST['month'])) ? $_POST['month'] : null;
+	$run_date = (!empty($_POST['date'])) ? $_POST['date'] : null;
 	$run_time = (!empty($_POST['time'])) ? $_POST['time'] : null;
-	$timezone = $_POST['tz'];
+	$timezone = (!empty($_POST['tz'])) ? $_POST['tz'] : null;
 	$battle = (!empty($_POST['battle'])) ? $_POST['battle'] : null;
 
-	$reports = $ccg->get_ttr_reports($run_date, $run_time, $battle);
+	if ($type == 'by_date') {
+		$reports = $ccg->get_ttr_reports_by_date($run_date, $run_time, $battle);
+	} else if ($type == 'by_month') {
+		$reports = $ccg->get_ttr_reports_by_month($run_month, $battle);
+	}
 
 	if (!empty($reports)) {
 		foreach ($reports as $report) {
