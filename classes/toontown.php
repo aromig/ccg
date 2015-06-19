@@ -55,10 +55,10 @@ class ToonTown {
 		);
 
 	//  -- Set in ccg_ttr_vars now
-	public $districts = array(
+	/*public $districts = array(
 		"primary"=>"Pastel Plains",
 		"backup"=>array("Eraser Oasis", "Brush Bay")
-		);
+		); */
 
 	public $prior_run_length = array(
 		"VP"=>"+1 hour",
@@ -68,7 +68,7 @@ class ToonTown {
 		);
 
 	// Run Schedule in Pacific Time -- Set in ccg_ttr_schedule now
-	public $run_schedule = array(
+	/*public $run_schedule = array(
 		"Monday"=>array(
 			"battle"=>array("CEO","VP","CFO","CJ"),
 			"start_time"=>array("5:00 AM", "12:00 PM", "6:00 PM"),
@@ -104,12 +104,12 @@ class ToonTown {
 			"start_time"=>array("5:00 AM", "12:00 PM", "4:00 PM", "7:15 PM"),
 			"thread"=>"368923"
 			),
-		);
+		);*/
 
 	//  -- Set in ccg_ttr_vars now
-	public $beanfest_days = array(
+	/*public $beanfest_days = array(
 		"Saturdays"=>array("8:15 AM")
-		);
+		);*/
 
 	public $vp_sos_card = array(
 		"", "Baker Bridget", "Barbara Seville", "Barnacle Bessie", "Clerk Clara", "Clerk Penny", "Clerk Ray", "Clerk Will", "Clumsy Ned", "Daffy Don", "Doctor Drift", "Flim Flam", "Flippy", "Franz Neckvein", "Julius Wheezer", "Lil Oldman", "Madame Chuckle", "Melody Wavers", "Moe Zart", "Mr. Freeze", "Nancy Gas", "Professor Guffaw", "Professor Pete", "Shelly Seaweed", "Sid Sonata", "Sofie Squirt", "Soggy Bottom", "Soggy Nell", "Sticky Lou", "Stinky Ned", "Unknown"
