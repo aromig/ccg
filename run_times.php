@@ -7,18 +7,21 @@
 	$timezone = $_POST['tz'];
 
 	$day = date('l', strtotime($battle_date));
-	for ($t=0;$t<count($tt->run_schedule[$day]["start_time"]);$t++) {
-		for ($b=0;$b<count($tt->run_schedule[$day]["battle"]);$b++) {
+	$start_times = $ccg->get_schedule_array($day, "start_times");
+	$battles = $ccg->get_schedule_array($day, "battle_order");
+
+	for ($t=0;$t<count($start_times);$t++) {
+		for ($b=0;$b<count($battles);$b++) {
 			if ($b != 0) {
-				$run_time = strtotime($tt->prior_run_length[$tt->run_schedule[$day]["battle"][$b]], $prior_start_time);
+				$run_time = strtotime($tt->prior_run_length[$battles[$b]], $prior_start_time);
 				$prior_start_time = $run_time;
 			} else {
-				$run_time = strtotime($tt->run_schedule[$day]["start_time"][$t]);
+				$run_time = strtotime($start_times[$t]);
 				$prior_start_time = $run_time;
 			}
 
 			if ($battle != '') {
-				if (strtolower($tt->run_schedule[$day]["battle"][$b]) == strtolower($battle)) {
+				if (strtolower($battles[$b]) == strtolower($battle)) {
 					switch ($timezone) {
 						case "PT":
 							$html .= '<option value="'.date("h:i A", $run_time).'">'.date("h:i A", $run_time).'</option>';

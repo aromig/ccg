@@ -174,12 +174,14 @@
 					echo PHP_EOL;
 				}
 			}
+
+			$run_thread = $ccg->get_schedule_array($dayofweek, "run_thread");
 			?>
 
 + Together in Cog Round
 <?= ($battle == 'VP') ? '* Together in Skelecog Round'.PHP_EOL : '' ?>
 <?= PHP_EOL.$report[0]['notes'] ?></textarea>
-				<a href="http://www.mmocentralforums.com/forums/newreply.php?do=newreply&noquote=1&t=<?= $tt->run_schedule[$dayofweek]['thread'] ?>" id="replytothread" class="btn btn-default form-control" target="_blank">
+				<a href="http://www.mmocentralforums.com/forums/newreply.php?do=newreply&noquote=1&t=<?= $run_thread[0] ?>" id="replytothread" class="btn btn-default form-control" target="_blank">
 					<span class="glyphicon glyphicon-paste"></span> Reply to <?= $dayofweek ?> Run Thread
 				</a>
 			</div>
