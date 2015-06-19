@@ -3,9 +3,12 @@
 
 	$html = '';
 	$day = $_POST['day'];
-	for ($t=0;$t<count($tt->run_schedule[$day]["start_time"]);$t++) {
-		for ($b=0;$b<count($tt->run_schedule[$day]["battle"]);$b++) {
-			$battle = $tt->run_schedule[$day]["battle"][$b];
+	$start_times = $ccg->get_schedule_array($day, "start_times");
+	$battles = $ccg->get_schedule_array($day, "battle_order");
+	
+	for ($t=0;$t<count($start_times);$t++) {
+		for ($b=0;$b<count($battles);$b++) {
+			$battle = $battles[$b];
 			switch ($battle) {
 				case "VP": $html .= '<tr class="warning">'; break;
 				case "CFO": $html .= '<tr class="success">'; break;
@@ -18,7 +21,7 @@
 				$run_time = strtotime($tt->prior_run_length[$battle], $prior_start_time);
 				$prior_start_time = $run_time;
 			} else { // Don't apply run_time to the first run of the section
-				$run_time = strtotime($tt->run_schedule[$day]["start_time"][$t]);
+				$run_time = strtotime($start_times[$t]);
 				$prior_start_time = $run_time;
 			}
 			$html .= '<td>'.date("h:i A", $run_time).'</td>';						 // Pacfic Time

@@ -196,6 +196,28 @@ class CCG {
 		return (!empty($run_report)) ? $run_report : null;
 	}
 
+	public function get_ttr_var($var) {
+		$db = new medoo();
+		$vars = $db->select(
+			"ccg_ttr_vars",
+			"value",
+			array("var"=>$var)
+		);
+
+		return (!empty($vars)) ? $vars[0] : null;
+	}
+
+	public function get_schedule_array($day, $column) {
+		$db = new medoo();
+		$results = $db->select(
+			"ccg_ttr_schedule",
+			$column,
+			array("dayofweek"=>$day)
+		);
+
+		return (!empty($results)) ? json_decode($results[0], true) : null;
+	}
+
 }
 
 ?>

@@ -253,6 +253,8 @@ footer.container {
 
 label { text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff; }
 
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year { color: #000; }
+
 /* Responsive Tweaks */
 @media only (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
   .table-responsive {

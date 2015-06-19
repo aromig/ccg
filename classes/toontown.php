@@ -66,7 +66,7 @@ class ToonTown {
 		"CEO"=>"+45 minutes"
 		);
 
-	// Run Schedule in Central Time
+	// Run Schedule in Pacific Time
 	public $run_schedule = array(
 		"Monday"=>array(
 			"battle"=>array("CEO","VP","CFO","CJ"),

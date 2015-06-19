@@ -14,12 +14,10 @@ chdir('../ccg');
 $current_user = $vbulletin->userinfo;
 
 include('classes/medoo.php');
-include('classes/user.php');
 include('classes/toontown.php');
 include('classes/ccg.php');
 
 $db = new medoo();
-$user = new User();
 $tt = new ToonTown();
 $ccg = new CCG();
 
@@ -45,14 +43,5 @@ if ($ccg->is_ccg_user($current_user)) {
 		);
 	}
 }
-
-/*// If the rememberme cookie exists and aren't logged in, log in the user that matches the token
-if (!$user->is_logged_in() && (isset($_COOKIE['rememberme']))) {
-	$results = $db->select("ccg_users", "user", array("persistToken"=>$_COOKIE['rememberme']));
-	if (!empty($results)) {
-        $_SESSION['user'] = $results[0];
-        $_SESSION['loggedin'] = true;
-	}
-}*/
 
 ?>

@@ -137,6 +137,11 @@
                 }
             }).focus(function(){
                 $(".ui-datepicker-calendar").hide();
+                $("#ui-datepicker-div").position({
+                    my: "center top",
+                    at: "center bottom",
+                    of: $(this)
+                });
             });
         });
     </script>

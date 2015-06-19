@@ -7,9 +7,14 @@
 <div class="row">
 	<div class="col-xs-12"><h3>TTR Run Schedule</h3></div>
 	<div class="col-xs-12">
-		<h4>District for all runs: <strong><?= $tt->districts["primary"] ?></strong></h4>
-		<h5><a title="When to use the Backup District" href="http://www.mmocentralforums.com/forums/showthread.php?t=364633">Backup District</a>: <strong><?= $tt->districts["backup"][0] ?></strong></h5>
-		<h5>Second Backup District: <strong><?= $tt->districts["backup"][1] ?></strong></h5>
+		<h4>District for all runs: <strong><?= $ccg->get_ttr_var('primary_district') ?></strong></h4>
+		<h5><a title="When to use the Backup District" href="http://www.mmocentralforums.com/forums/showthread.php?t=364633">Backup District</a>: <strong>
+			<?php
+				$backups = json_decode($ccg->get_ttr_var('backup_districts'), true);
+				echo $backups[0];
+			 ?>
+			</strong></h5>
+		<h5>Second Backup District: <strong><?= $backups[1] ?></strong></h5>
 
 		<h4 class="centered">
 			<select id="schedule_day" name="schedule_day">
@@ -42,9 +47,13 @@
 		</div>
 	</div>
 
+<?php
+	$beanfest = json_decode($ccg->get_ttr_var('beanfest'), true);
+?>
+
 	<div class="col-xs-12"><h3>Beanfests</h3></div>
 	<div class="col-xs-12">
-		<h4>District: <strong><?= $tt->districts["primary"] ?></strong></h4>
+		<h4>District: <strong><?= $beanfest['district'] ?></strong></h4>
 		<h5>Where: Goofy's Speedway</h5>
 	</div>
 	<div class="col-xs-12 col-md-4 col-lg-6">
@@ -68,7 +77,7 @@
 				<tbody>
 					<tr>
 						<?php
-							foreach ($tt->beanfest_days as $day => $times) {
+							foreach ($beanfest['days'] as $day => $times) {
 								echo '<td>'.$day.'</td>';
 								foreach ($times as $time) {
 									$fest_time = strtotime($time);
@@ -108,7 +117,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     
-    <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/schedule.js"></script>
 
   </body>
