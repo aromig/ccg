@@ -38,7 +38,7 @@ if ($ccg->is_ccg_user($current_user)) {
 
 	if ($_SESSION['registered']) {
 		$update = $db->update("ccg_users",
-			array("last_login"=>date("Y-m-d"), "last_ip"=>$_SERVER['REMOTE_ADDR'], "bassie"=>$bassie),
+			array("last_login"=>date("Y-m-d"), "last_ip"=>$_SERVER['REMOTE_ADDR'], "bassie"=>$bassie, "mcf_title"=>$_SESSION['role']),
 			array("mcf_username"=>$_SESSION['user'])
 		);
 	}

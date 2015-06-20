@@ -255,12 +255,19 @@ label { text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0
 
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year { color: #000; }
 
+#admin_nav { text-align: center; }
+#admin_nav ul { display: inline-block; }
+
 /* Responsive Tweaks */
 @media only (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
   .table-responsive {
     overflow-x: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
+}
+
+@media only screen and (min-width: 767px) {
+  #admin_nav li { width: 100%; }
 }
 
 @media only screen and (max-width: 767px) {
