@@ -76,6 +76,11 @@
 				echo ($toon[$i]['skeleround'] == '1') ? '*' : '';
 				echo $toon[$i]['name'].' </div><div class="col-xs-4 col-sm-1 col-sm-offset-0 col-md-1">'.$toon[$i]['laff'].' </div><div class="col-xs-6 col-sm-4 col-md-4">'.$toon[$i]['suit'].' '.$toon[$i]['suitlevel'].'</div>';
 				echo '<div class="col-xs-6 col-sm-3 col-sm-offset-0 col-md-4">';
+				if ($toon[$i]['status'] == "Danced") {
+						if (!empty($tt->suit_milestones[intval($toon[$i]['suitlevel'])][$toon[$i]['suit']])) {
+							echo $tt->suit_milestones[intval($toon[$i]['suitlevel'])][$toon[$i]['suit']];
+						}
+					}
 				echo ($toon[$i]['status'] != "Danced") ? $toon[$i]['status'] : '&nbsp;';
 				echo '</div>';
 			}

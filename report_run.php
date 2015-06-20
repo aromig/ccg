@@ -140,6 +140,9 @@
 					echo ($toon['skeleround'] == '1') ? '*' : '';
 					echo $toon['name'].' </div><div class="col-xs-4 col-sm-1 col-sm-offset-0">'.$toon['laff'].' </div><div class="col-xs-6 col-sm-5 col-md-3">'.$toon['suit'].' '.$toon['suitlevel'].'</div>';
 					echo '<div class="col-xs-6 col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-0">';
+					if ($toon['status'] == "Danced") {
+						echo $tt->suit_milestones[intval($toon['suitlevel'])][$toon['suit']];
+					}
 					echo ($toon['status'] != "Danced") ? $toon['status'] : '&nbsp;';
 					echo '</div>';
 				}
@@ -169,7 +172,12 @@
 					$toon = json_decode($report[0]['toon_'.$i], true);
 					echo ($toon['coground'] == '1') ? '+' : '';
 					echo ($toon['skeleround'] == '1') ? '*' : '';
-					echo $toon['name'].' - '.$toon['laff'].' - '.$toon['suit'].' '.$toon['suitlevel'];;
+					echo $toon['name'].' - '.$toon['laff'].' - '.$toon['suit'].' '.$toon['suitlevel'];
+					if ($toon['status'] == "Danced") {
+						if (!empty($tt->suit_milestones[intval($toon['suitlevel'])][$toon['suit']])) {
+							echo ' <- '.$tt->suit_milestones[intval($toon['suitlevel'])][$toon['suit']];
+						}
+					}
 					echo ($toon['status'] != "Danced") ? ' - '.$toon['status'] : '';
 					echo PHP_EOL;
 				}
@@ -181,7 +189,7 @@
 + Together in Cog Round
 <?= ($battle == 'VP') ? '* Together in Skelecog Round'.PHP_EOL : '' ?>
 <?= PHP_EOL.$report[0]['notes'] ?></textarea>
-				<a href="http://www.mmocentralforums.com/forums/newreply.php?do=newreply&noquote=1&t=<?= $run_thread[0] ?>" id="replytothread" class="btn btn-default form-control" target="_blank">
+				<a href="http://www.mmocentralforums.com/forums/newreply.php?do=newreply&noquote=1&t=<?= $run_thread ?>" id="replytothread" class="btn btn-default form-control" target="_blank">
 					<span class="glyphicon glyphicon-paste"></span> Reply to <?= $dayofweek ?> Run Thread
 				</a>
 			</div>
