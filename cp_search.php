@@ -9,9 +9,7 @@
 
 	if ($type == 'user') {
 		$results = $db->select("ccg_users",
-			array("mcf_username",
-				  "mcf_userid"
-				  ),
+			array("mcf_username","mcf_userid"),
 			array("mcf_username[~]"=>$query,
 				  "ORDER"=>"mcf_username ASC")
 		);
@@ -19,6 +17,18 @@
 		$html .= '<div class="col-xs-12 well well-sm">';
 		foreach ($results as $result) {
 			$html .= '<a class="btn btn-default user_result" id="'.$result['mcf_userid'].'" role="button" style="display: inline; margin-right: 6px;">'.$result['mcf_username'].'</a>';
+		}
+		$html .= '</div>';
+	} elseif ($type == 'toon') {
+		$results = $db->select("ccg_toons",
+			array("toon","toon_id"),
+			array("toon[~]"=>$query,
+				  "ORDER"=>"toon ASC")
+		);
+
+		$html .= '<div class="col-xs-12 well well-sm">';
+		foreach ($results as $result) {
+			$html .= '<a class="btn btn-default toon_result" id="'.$result['toon_id'].'" role="button" style="display: inline; margin-right: 6px;">'.$result['toon'].'</a>';
 		}
 		$html .= '</div>';
 	}
