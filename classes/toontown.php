@@ -2,6 +2,26 @@
 
 class ToonTown {
 
+	public $districts = array(
+		"Acrylic Acres",
+		"Baroque Bluffs",
+		"Bliss Bayou",
+		"Brush Bay",
+		"Colorful Canvas",
+		"Easel Acres",
+		"Eraser Oasis",
+		"Graphite Gulch",
+		"Paintbrush Field",
+		"Pastel Plains",
+		"Pianissimo Plains",
+		"Pigment Point",
+		"Renaissance River",
+		"Stencil Steppe",
+		"Vibrant Valley",
+		"Watercolor Woods",
+		"Welcome Valley"
+		);
+
 	public $gags = array(
 		"toonup"=>array("", "Feather", "Megaphone", "Lipstick", "Bamboo Cane", "Pixie Dust", "Juggling Balls", "High Dive"),
 		"trap"=>array("", "Banana Peel", "Rake", "Marbles", "Quicksand", "Trapdoor", "TNT", "Railroad"),
