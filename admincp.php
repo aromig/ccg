@@ -13,7 +13,7 @@
     } else {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($_POST['function'] == 'user') {
-                // Edit Users
+                // Save Users
                 $user = array();
                 $user['mcf_username'] = $_POST['username'];
                 $user['admin'] = isset($_POST['admin']) ? 1 : 0;
@@ -23,33 +23,104 @@
                     array("ccg_id"=>$_POST['ccg_id'])
                 );
 
-                if ($stmt == 1) { $success = '<label class="input-lg bg-success">User Saved!</label>'; }
+                if ($stmt == 1) { $success = 'User "'.$user['mcf_username'].'" Updated!'; }
             }
+            elseif ($_POST['function'] == 'toon') {
+                // Save Toons
+                $toon = array();
+                $toon['toon'] = $_POST['toon'];
+                $toon['laff'] = $_POST['laff'];
+                $toon['max_toonup'] = $_POST['gags_toonup'];
+                $toon['max_trap'] = $_POST['gags_trap'];
+                $toon['max_lure'] = $_POST['gags_lure'];
+                $toon['max_sound'] = $_POST['gags_sound'];
+                $toon['max_throw'] = $_POST['gags_throw'];
+                $toon['max_squirt'] = $_POST['gags_squirt'];
+                $toon['max_drop'] = $_POST['max_drop'];
+                $toon['sellsuit'] = $_POST['suit_sell'];
+                $toon['cashsuit'] = $_POST['suit_cash'];
+                $toon['lawsuit'] = $_POST['suit_law'];
+                $toon['bosssuit'] = $_POST['suit_boss'];
 
-        // Edit Toons
+                $stmt = $db->update("ccg_toons",
+                    $toon,
+                    array("toon_id"=>$_POST['toon_id'])
+                );
 
-        // Edit Run Reports
+                if ($stmt == 1) { $success = 'Toon "'.$toon['toon'].'" Updated!'; }
+            } elseif ($_POST['function'] == 'report') {
+                // Save Run Reports
+            } elseif ($_POST['function'] == 'schedule') {
+                // Save Schedule
+            } elseif ($_POST['function'] == 'other') {
+                // Save Other Things
+                $other = array();
+                $other['primary_district'] = $_POST['primary_district'];
+                $other['backup_districts'] = json_encode(array($_POST['backup_district_1'], $_POST['backup_district_2']));
+                $textline = explode("\r\n", $_POST['beanfest_days']); // array("Saturdays @ 08:15 AM")
+                
+                $days = array();
+                foreach ($textline as $text) {
+                    $textarray = explode(" @ ", $text); // array("Saturdays","08:15 AM")
+                    $days[$textarray[0]] = $textarray[1]; // array("Saturdays"=>"08:15 AM")
+                }
 
-        // Edit Other Things
+                $bfest = array(
+                    'district'=>$_POST['beanfest_district'],
+                    'days'=>$days
+                    );
+
+                $other['beanfest'] = json_encode($bfest);
+                
+                $stmt = $db->update("ccg_ttr_vars",
+                    array("value"=>$other['primary_district']),
+                    array("var"=>"primary_district")
+                );
+                $stmt = $db->update("ccg_ttr_vars",
+                    array("value"=>$other['backup_districts']),
+                    array("var"=>"backup_districts")
+                );
+                $stmt = $db->update("ccg_ttr_vars",
+                    array("value"=>$other['beanfest']),
+                    array("var"=>"beanfest")
+                );
+
+                $success = 'Other Settings Updated!';
+            }
         }
+        
+        // Items that need to be populated on first load
+        $primary_district = $ccg->get_ttr_var('primary_district');
+        $backup_districts = json_decode($ccg->get_ttr_var('backup_districts'), true);
+        $beanfest = json_decode($ccg->get_ttr_var('beanfest'), true);
 ?>
 
 <!-- Content goes here -->
 <div class="row">
     <div class="col-xs-12"><h3>AdminCP</h3></div>
 
-    <div id="admin_nav" class="col-xs-12 col-sm-3 col-sm-push-9 col-md-2 col-md-push-10">
+    <div id="admin_nav" class="col-xs-12 col-sm-3 col-sm-push-9 col-md-3 col-md-push-9">
         <ul class="nav nav-pills">
-            <li class="active"><a data-toggle="pill" href="#userMgr"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+            <li><a data-toggle="pill" href="#userMgr"><span class="glyphicon glyphicon-user"></span> Users</a></li>
             <li><a data-toggle="pill" href="#toonMgr"><span class="glyphicon glyphicon-sunglasses"></span> Toons</a></li>
             <li><a data-toggle="pill" href="#reportMgr"><span class="glyphicon glyphicon-list-alt"></span> Reports</a></li>
-            <li><a data-toggle="pill" href="#optionMgr"><span class="glyphicon glyphicon-cog"></span> Options</a></li>
+            <li><a data-toggle="pill" href="#scheduleMgr"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li>
+            <li><a data-toggle="pill" href="#otherMgr"><span class="glyphicon glyphicon-cog"></span> Other</a></li>
         </ul>
     </div>
 
-    <div id="admin_panel" class="col-xs-12 col-sm-9 col-sm-pull-3 col-md-10 col-md-pull-2">
+    <div id="admin_panel" class="col-xs-12 col-sm-9 col-sm-pull-3 col-md-9 col-md-pull-3">
         <div class="tab-content">
-            <div id="userMgr" class="tab-pane fade in active">
+            <div id="mainPane" class="tab-pane fade in active">
+                <?php
+                    if (isset($success)) {
+                        echo'<h4>'.$success.'</h4>';
+                    } else {
+                        echo '';
+                    }
+                ?>
+            </div>
+            <div id="userMgr" class="tab-pane fade">
                 <h4>Manage Users</h4>
                 <div class="col-xs-12 col-sm-8 col-md-6">
                     <div class="input-group">
@@ -59,7 +130,7 @@
                         </span>
                     </div>
                 </div>
-                <?php if (isset($success)) { echo'<div class="col-xs-12">'.$success.'</div>'; } ?>
+                
                 <div id="user_results" style="margin-top: 12px;"></div>
                 <div id="user_details" style="clear: both;">
                     <form role="form" method="post" action="" autocomplete="off" id="user_form" class="form-horizontal">
@@ -119,12 +190,281 @@
             </div>
             <div id="toonMgr" class="tab-pane fade">
                 <h4>Manage Toons</h4>
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <div class="input-group">
+                        <input type="text" name="search_toon" id="search_toon" class="form-control" placeholder="Toon Name">
+                        <span class="input-group-btn">
+                            <button name="search_toon_btn" id="search_toon_btn" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-search"></span> Search</button>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="toon_results" style="margin-top: 12px;"></div>
+                <div id="toon_details" style="clear: both;">
+                    <form role="form" method="post" action="" autocomplete="off" id="toon_form" class="form-horizontal">
+                        <input type="hidden" name="function" value="toon">
+                        <input type="hidden" id="toon_id" name="toon_id">
+                        <div class="form-group col-sm-6">
+                            <label for="toon" class="col-xs-12 control-label">Toon Name:</label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" id="toon" name="toon">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="toon_username" class="col-xs-12 control-label">Username:</label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" id="toon_username" name="toon_username" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="laff" class="col-xs-12 control-label">Laff:</label>
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" id="laff" name="laff">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="laff" class="col-xs-12 control-label">&nbsp;</label>
+                            <div class="col-xs-12">
+                                <p class="form-control-static">&nbsp;</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="gags_toonup" class="col-xs-12 control-label">Toon-Up:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_toonup" id="gags_toonup" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['toonup'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_trap" class="col-xs-12 control-label">Trap:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_trap" id="gags_trap" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['trap'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_lure" class="col-xs-12 control-label">Lure:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_lure" id="gags_lure" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['lure'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_sound" class="col-xs-12 control-label">Sound:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_sound" id="gags_sound" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['sound'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_throw" class="col-xs-12 control-label">Throw:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_throw" id="gags_throw" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['throw'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_squirt" class="col-xs-12 control-label">Squirt:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_squirt" id="gags_squirt" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['squirt'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="gags_drop" class="col-xs-12 control-label">Drop:</label>
+                            <div class="col-xs-12">
+                                <select name="gags_drop" id="gags_drop" class="form-control">
+                                <?php
+                                    for ($i=0;$i<=7;$i++) {
+                                        echo '<option value="'.$i.'">'.$tt->gags['drop'][$i].'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="laff" class="col-xs-12 control-label">&nbsp;</label>
+                            <div class="col-xs-12">
+                                <p class="form-control-static">&nbsp;</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="suit_sell" class="col-xs-12 control-label">Sellbot Suit::</label>
+                            <div class="col-xs-12">
+                                <select name="suit_sell" id="suit_sell" class="form-control">
+                                <?php
+                                    foreach ($tt->cogsuits['sellbot'] as $suit) {
+                                        echo '<option value="'.$suit.'">'.$suit.'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="suit_cash" class="col-xs-12 control-label">Cashbot Suit::</label>
+                            <div class="col-xs-12">
+                                <select name="suit_cash" id="suit_cash" class="form-control">
+                                <?php
+                                    foreach ($tt->cogsuits['cashbot'] as $suit) {
+                                        echo '<option value="'.$suit.'">'.$suit.'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="suit_law" class="col-xs-12 control-label">Lawbot Suit::</label>
+                            <div class="col-xs-12">
+                                <select name="suit_law" id="suit_law" class="form-control">
+                                <?php
+                                    foreach ($tt->cogsuits['lawbot'] as $suit) {
+                                        echo '<option value="'.$suit.'">'.$suit.'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="suit_boss" class="col-xs-12 control-label">Bossbot Suit::</label>
+                            <div class="col-xs-12">
+                                <select name="suit_boss" id="suit_boss" class="form-control">
+                                <?php
+                                    foreach ($tt->cogsuits['bossbot'] as $suit) {
+                                        echo '<option value="'.$suit.'">'.$suit.'</option>';
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <div class="col-sm-12">
+                                <button type="submit" id="save_toon" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div id="reportMgr" class="tab-pane fade">
                 <h4>Manage Reports</h4>
             </div>
-            <div id="optionMgr" class="tab-pane fade">
-                <h4>Manage Options</h4>
+            <div id="scheduleMgr" class="tab-pane fade">
+                <h4>Manage Run Schedule</h4>
+            </div>
+            <div id="otherMgr" class="tab-pane fade">
+                <h4>Other Settings</h4>
+                <form role="form" method="post" action="" autocomplete="off" id="other_form" class="form-horizontal">
+                    <input type="hidden" name="function" value="other">
+
+                    <h5>TTR : Run Districts:</h5>
+                    <div class="form-group col-xs-12">
+                        <label for="primary_district" class="col-xs-12 control-label">Primary District:</label>
+                        <div class="col-sm-6">
+                            <select id="primary_district" name="primary_district" class="form-control">
+                            <?php
+                                foreach ($tt->districts as $district) {
+                                    echo '<option value="'.$district.'"';
+                                    if ($district == $primary_district) { echo ' selected'; }
+                                    echo '>'.$district.'</option>';
+                                }
+                            ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label for="backup_district_1" class="col-xs-12 control-label">Backup Districts:</label>
+                        <div class="col-sm-6">
+                            <select id="backup_district_1" name="backup_district_1" class="form-control">
+                            <?php
+                                foreach ($tt->districts as $district) {
+                                    echo '<option value="'.$district.'"';
+                                    if ($district == $backup_districts[0]) { echo ' selected'; }
+                                    echo '>'.$district.'</option>';
+                                }
+                            ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="backup_district_2" name="backup_district_2" class="form-control">
+                            <?php
+                                foreach ($tt->districts as $district) {
+                                    echo '<option value="'.$district.'"';
+                                    if ($district == $backup_districts[1]) { echo ' selected'; }
+                                    echo '>'.$district.'</option>';
+                                }
+                            ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h5 style="clear: both;">TTR : Beanfest</h5>
+                    <div class="form-group col-xs-12">
+                        <label for="beanfest_district" class="col-xs-12 control-label">District:</label>
+                        <div class="col-sm-6">
+                            <select id="beanfest_district" name="beanfest_district" class="form-control">
+                            <?php
+                                foreach ($tt->districts as $district) {
+                                    echo '<option value="'.$district.'"';
+                                    if ($district == $beanfest['district']) { echo ' selected'; }
+                                    echo '>'.$district.'</option>';
+                                }
+                            ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label for="beanfest_days" class="col-xs-12 control-label">Days &amp; Times (Pacific Timezone):<br /><small>(Example: Saturdays @ 08:15 AM)</small></label>
+                        <div class="col-sm-9">
+                            <?php
+                                $i = 0;
+                                $text = "";
+                                foreach ($beanfest['days'] as $day => $time) {
+                                    if ($i > 0) { $text .= "\n"; }
+                                    $text .= $day." @ ".$time;
+                                    $i++;
+                                }
+                            ?>
+                            <textarea id="beanfest_days" name="beanfest_days" class="form-control" rows="3"><?= $text ?></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-6">
+                        <div class="col-sm-12">
+                            <button type="submit" id="save_other" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -205,6 +545,56 @@
                     return false;
                 }
             }
+        });
+
+        $("#toon_details").hide();
+
+        $("#search_toon").keypress(function(event){
+            if (event.which == 13) {
+                event.preventDefault();
+                $("#search_toon_btn").trigger("click");
+            }
+        });
+        $("#search_toon_btn").click(function(){
+            var query = $("#search_toon").val();
+            var type = "toon";
+            $.ajax({
+                type: "POST",
+                url: "cp_search.php",
+                data: "type="+type+"&query="+query,
+                success: function(html){
+                    $("#toon_results").html(html);
+                }
+            });
+        });
+
+        $("#toon_results").on('click', '.toon_result', function(){
+            var toonid = $(this).prop('id');
+            $.ajax({
+                type: "POST",
+                url: "cp_toon.php",
+                data: "toonid="+toonid,
+                success: function(json){
+                    console.log(json);
+                    var toon = $.parseJSON(json);
+                    $("#toon_id").val(toon.toon_id);
+                    $("#toon").val(toon.toon);
+                    $("#toon_username").val(toon.mcf_username);
+                    $("#laff").val(toon.laff);
+                    $("#gags_toonup").val(toon.max_toonup);
+                    $("#gags_trap").val(toon.max_trap);
+                    $("#gags_lure").val(toon.max_lure);
+                    $("#gags_sound").val(toon.max_sound);
+                    $("#gags_throw").val(toon.max_throw);
+                    $("#gags_squirt").val(toon.max_squirt);
+                    $("#gags_drop").val(toon.max_drop);
+                    $("#suit_sell").val(toon.sellsuit);
+                    $("#suit_cash").val(toon.cashsuit);
+                    $("#suit_law").val(toon.lawsuit);
+                    $("#suit_boss").val(toon.bosssuit);
+                    $("#toon_details").show();
+                }
+            })
         });
     });
     </script>
