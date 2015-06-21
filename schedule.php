@@ -75,28 +75,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<?php
-							foreach ($beanfest['days'] as $day => $times) {
-								echo '<td>'.$day.'</td>';
-								foreach ($times as $time) {
-									$fest_time = strtotime($time);
-									// Pacific Time
-									echo '<td>'.date("h:i A", $fest_time).'</td>';
-									// Mountain Time
-									echo '<td>'.date("h:i A", strtotime("+1 hour", $fest_time)).'</td>';
-									// Central Time
-									echo '<td>'.date("h:i A", strtotime("+2 hours", $fest_time)).'</td>';
-									// Eastern Time
-									echo '<td>'.date("h:i A", strtotime("+3 hours", $fest_time)).'</td>';
-									// Greenwich Mean Time
-									echo '<td>'.date("h:i A", strtotime("+7 hours", $fest_time)).'</td>';
-									// British Summer Time Time
-									echo '<td>'.date("h:i A", strtotime("+8 hours", $fest_time)).'</td>';
-								}
-							}
-						?>
-					</tr>
+					<?php
+						foreach ($beanfest['days'] as $day => $time) {
+							echo '<tr>';
+							echo '<td>'.$day.'</td>';
+							$fest_time = strtotime($time);
+							// Pacific Time
+							echo '<td>'.date("h:i A", $fest_time).'</td>';
+							// Mountain Time
+							echo '<td>'.date("h:i A", strtotime("+1 hour", $fest_time)).'</td>';
+							// Central Time
+							echo '<td>'.date("h:i A", strtotime("+2 hours", $fest_time)).'</td>';
+							// Eastern Time
+							echo '<td>'.date("h:i A", strtotime("+3 hours", $fest_time)).'</td>';
+							// Greenwich Mean Time
+							echo '<td>'.date("h:i A", strtotime("+7 hours", $fest_time)).'</td>';
+							// British Summer Time Time
+							echo '<td>'.date("h:i A", strtotime("+8 hours", $fest_time)).'</td>';
+							echo '</tr>';
+						}
+					?>
 				</tbody>
 			</table>
 		</div>
