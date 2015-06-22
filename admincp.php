@@ -52,6 +52,20 @@
                 // Save Run Reports
             } elseif ($_POST['function'] == 'schedule') {
                 // Save Schedule
+                $schedule = array();
+                $days = $db->select("ccg_ttr_schedule","dayofweek");
+                foreach ($days as $day) {
+                    $schedule['battle_order'] = json_encode(explode("\r\n", $_POST['battle_order_'.$day]));
+                    $schedule['start_times'] = json_encode(explode("\r\n", $_POST['start_times_'.$day]));
+                    $schedule['run_thread'] = $_POST['run_thread_'.$day];
+                    //echo $schedule['battle_order']."<br />".$schedule['start_times']."<br />".$schedule['run_thread']."<hr />";
+                    $stmt = $db->update("ccg_ttr_schedule",
+                        $schedule,
+                        array("dayofweek"=>$day)
+                    );
+                }
+                $success = 'Run Schedule Updated!';
+
             } elseif ($_POST['function'] == 'other') {
                 // Save Other Things
                 $other = array();
@@ -88,11 +102,6 @@
                 $success = 'Other Settings Updated!';
             }
         }
-        
-        // Items that need to be populated on first load
-        $primary_district = $ccg->get_ttr_var('primary_district');
-        $backup_districts = json_decode($ccg->get_ttr_var('backup_districts'), true);
-        $beanfest = json_decode($ccg->get_ttr_var('beanfest'), true);
 ?>
 
 <!-- Content goes here -->
@@ -402,11 +411,11 @@
                                     $i++;
                                 }
                             ?>
-                            <textarea id="battle_order_<?= $day['dayofweek'] ?>" name="battle_order_<? $day['dayofweek'] ?>" class="form-control" rows="4"><?= $battle_order ?></textarea>
+                            <textarea id="battle_order_<?= $day['dayofweek'] ?>" name="battle_order_<?= $day['dayofweek'] ?>" class="form-control" rows="4"><?= $battle_order ?></textarea>
                         </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="start_times_<?= $day['start_times'] ?>" class="col-xs-12 control-label">Start Times (Pacific Timezone):<br /><small>(Example: 5:00 AM)</small></label>
+                        <label for="start_times_<?= $day['dayofweek'] ?>" class="col-xs-12 control-label">Start Times (Pacific Timezone):<br /><small>(Example: 5:00 AM)</small></label>
                         <div class="col-xs-12">
                             <?php
                                 $i = 0;
@@ -418,13 +427,13 @@
                                     $i++;
                                 }
                             ?>
-                            <textarea id="start_times_<?= $day['start_times'] ?>" name="start_times_<?= $day['start_times'] ?>" class="form-control" rows="4"><?= $start_times ?></textarea>
+                            <textarea id="start_times_<?= $day['dayofweek'] ?>" name="start_times_<?= $day['dayofweek'] ?>" class="form-control" rows="4"><?= $start_times ?></textarea>
                         </div>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="run_thread_<?= $day['dayofweek'] ?>" class="col-xs-12 control-label">MCF Run Thread:</label>
                         <div class="col-xs-12">
-                            <input type="text" class="form-control" id="run_thread_<? $day['dayofweek'] ?>" name="run_thread_<? $day['dayofweek'] ?>" value="<?= $day['run_thread'] ?>">
+                            <input type="text" class="form-control" id="run_thread_<? $day['dayofweek'] ?>" name="run_thread_<?= $day['dayofweek'] ?>" value="<?= $day['run_thread'] ?>">
                         </div>
                     </div>
                 <?php
@@ -441,7 +450,11 @@
                 <h4>Other Settings</h4>
                 <form role="form" method="post" action="" autocomplete="off" id="other_form" class="form-horizontal">
                     <input type="hidden" name="function" value="other">
-
+                    <?php
+                        $primary_district = $ccg->get_ttr_var('primary_district');
+                        $backup_districts = json_decode($ccg->get_ttr_var('backup_districts'), true);
+                        $beanfest = json_decode($ccg->get_ttr_var('beanfest'), true);
+                    ?>
                     <h5>TTR : Run Districts:</h5>
                     <div class="form-group col-xs-12">
                         <label for="primary_district" class="col-xs-12 control-label">Primary District:</label>
