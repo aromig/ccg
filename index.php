@@ -11,7 +11,7 @@
 		<p>The CCG is a group of people who attend boss battles within the game ToonTown without the elevator shuffle. The Cold Callers Guild started in February 2004 by ToonTown player  AJ the Blue Horse with the simple idea to start a group that would never shuffle off the elevator to the Sellbot VP, regardless of who was on it. There was one rule and one rule only: No Shuffling!</p>
 		<p>Over the years, we have grown and have added a few guidelines to meet the needs of all our members but that one rule will always remain.</p>
 	</div>
-	<div class="col-sm-5 col-sm-offset-0 col-md-4 centered"><img src="images/PackOn_Note.png" /></div>
+	<div class="col-sm-5 col-sm-offset-0 col-md-4 centered"><img src="images/PackOn_Note.png" alt="CCG: Pack on & Stay on!" title="CCG: Pack on & Stay on!" /></div>
 	<div class="col-xs-12 col-sm-6">
 		<h4>ToonTown Rewritten &amp; Wizard101</h4>
 		<p>With the closing of Disney's ToonTown Online in September 2013, the CCG turned to other online games to keep activity within the group alive. More than a few games were played but a lot of people took to KingsIsle's Wizard101. With the emergence of ToonTown Rewritten (a community revival of Disney's retired MMO), fresh air was breathed into the CCG. Currently the Cold Callers Guild looks to both TTR and W101 for ongoing player activity.</p>
