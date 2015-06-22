@@ -54,7 +54,7 @@
 	<div class="col-xs-12"><h3>Beanfests</h3></div>
 	<div class="col-xs-12">
 		<h4>District: <strong><?= $beanfest['district'] ?></strong></h4>
-		<h5>Where: Goofy's Speedway</h5>
+		<h5>Where: Goofy Speedway</h5>
 	</div>
 	<div class="col-xs-12 col-md-4 col-lg-6">
 		<p>Are you low on beans? Don't have enough Jellybeans for that Accessory? Do you just want to help out the CCG community? Bring any toon, big or small, to the CCG's beanfest!</p>
