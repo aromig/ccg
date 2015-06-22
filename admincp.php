@@ -381,6 +381,61 @@
             </div>
             <div id="scheduleMgr" class="tab-pane fade">
                 <h4>Manage Run Schedule</h4>
+                <form role="form" method="post" action="" autocomplete="off" id="schedule_form" class="form-horizontal">
+                    <input type="hidden" name="function" value="schedule">
+
+                <?php
+                    $schedule = $db->select("ccg_ttr_schedule","*");
+                    foreach ($schedule as $day) {
+                ?>
+                    <h5 style="clear: both;"><?= $day['dayofweek'] ?></h5>
+                    <div class="form-group col-sm-6">
+                        <label for="battle_order_<?= $day['dayofweek'] ?>" class="col-xs-12 control-label">Battle Order:<br /><small>(Start Times based on first battle listed)</small></label>
+                        <div class="col-xs-12">
+                            <?php
+                                $i = 0;
+                                $battle_order = "";
+                                $battles = json_decode($day['battle_order'], true);
+                                foreach ($battles as $battle) {
+                                    if ($i > 0) { $battle_order .= "\n"; }
+                                    $battle_order .= $battle;
+                                    $i++;
+                                }
+                            ?>
+                            <textarea id="battle_order_<?= $day['dayofweek'] ?>" name="battle_order_<? $day['dayofweek'] ?>" class="form-control" rows="4"><?= $battle_order ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="start_times_<?= $day['start_times'] ?>" class="col-xs-12 control-label">Start Times (Pacific Timezone):<br /><small>(Example: 5:00 AM)</small></label>
+                        <div class="col-xs-12">
+                            <?php
+                                $i = 0;
+                                $start_times = "";
+                                $times = json_decode($day['start_times'], true);
+                                foreach ($times as $time) {
+                                    if ($i > 0) { $start_times .= "\n"; }
+                                    $start_times .= $time;
+                                    $i++;
+                                }
+                            ?>
+                            <textarea id="start_times_<?= $day['start_times'] ?>" name="start_times_<?= $day['start_times'] ?>" class="form-control" rows="4"><?= $start_times ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="run_thread_<?= $day['dayofweek'] ?>" class="col-xs-12 control-label">MCF Run Thread:</label>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" id="run_thread_<? $day['dayofweek'] ?>" name="run_thread_<? $day['dayofweek'] ?>" value="<?= $day['run_thread'] ?>">
+                        </div>
+                    </div>
+                <?php
+                    }
+                ?>
+                    <div class="form-group col-xs-12">
+                        <div class="col-sm-6">
+                            <button type="submit" id="save_schedule" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div id="otherMgr" class="tab-pane fade">
                 <h4>Other Settings</h4>
