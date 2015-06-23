@@ -1,6 +1,8 @@
 <?php
 	require_once('includes/config.php');
 
+	if ($_SERVER['REQUEST_METHOD'] != "POST") { die('Access Denied'); }
+
 	$html = '';
 	$day = $_POST['day'];
 	$start_times = $ccg->get_schedule_array($day, "start_times");

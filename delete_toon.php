@@ -1,8 +1,13 @@
 <?php
-	session_start();
+	require_once('includes/config.php');
 
-	require_once('classes/medoo.php');
-	$db = new medoo();
+	if ($_SERVER['REQUEST_METHOD'] != "POST") { die('Access Denied'); }
+
+	$ref = $_SERVER['HTTP_REFERER'];
+
+	if (strpos($ref, 'www.mmocentralforums.com/ccg/profile.php') === false) {
+		die('Access Denied');
+	}
 
 	$toon_id = $_POST['toon_id'];
 

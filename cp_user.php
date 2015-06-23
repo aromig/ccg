@@ -1,6 +1,8 @@
 <?php
 	require_once('includes/config.php');
 
+	if ($_SERVER['REQUEST_METHOD'] != "POST") { die('Access Denied'); }
+
 	if (!isset($_POST['userid'])) { die(); }
 
 	$userid = $_POST['userid'];

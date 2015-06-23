@@ -1,6 +1,8 @@
 <?php
 	require_once('includes/config.php');
 
+	if ($_SERVER['REQUEST_METHOD'] != "POST") { die('Access Denied'); }
+
 	$html = '<option value=""></option>';
 	$battle = $_POST['battle'];
 	$battle_date = $_POST['date'];
