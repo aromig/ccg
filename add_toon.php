@@ -59,13 +59,13 @@
 	<div class="col-xs-12"><h4></h4></div>
 	<div class="col-sm-6 col-xs-12">
 		<form role="form" method="post" action="" autocomplete="on" id="add_toon" class="form-horizontal">
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="toon_name" title="Toon Name" class="control-label col-xs-6 col-sm-3">Name</label>
 				<div class="col-xs-6 col-sm-9">
 					<input type="text" name="toon_name" id="toon_name" class="form-control" placeholder="Toon Name" tabindex="1" value="<?= $_POST['toon_name'] ?>">
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="toon_laff" title="Laff Points" class="control-label col-xs-6 col-sm-3">Laff</label>
 				<div class="col-xs-6 col-sm-9">
 					<input type="text" name="toon_laff" id="toon_laff" class="form-control" placeholder="Laff Points" tabindex="2" value="<?= $_POST['toon_laff'] ?>">
@@ -73,7 +73,7 @@
 			</div>
 
 			<h5>Gags</h5>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_toonup" title="Toon Up" class="control-label col-xs-6 col-sm-3">Toon-Up</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_toonup" id="gags_toonup" class="form-control" tabindex="3">>
@@ -87,7 +87,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_trap" title="Trap" class="control-label col-xs-6 col-sm-3">Trap</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_trap" id="gags_trap" class="form-control" tabindex="4">>
@@ -101,7 +101,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_lure" title="Lure" class="control-label col-xs-6 col-sm-3">Lure</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_lure" id="gags_lure" class="form-control" tabindex="5">>
@@ -115,7 +115,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_sound" title="Sound" class="control-label col-xs-6 col-sm-3">Sound</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_sound" id="gags_sound" class="form-control" tabindex="6">>
@@ -129,7 +129,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_throw" title="Throw" class="control-label col-xs-6 col-sm-3">Throw</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_throw" id="gags_throw" class="form-control" tabindex="7">>
@@ -143,7 +143,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_squirt" title="Squirt" class="control-label col-xs-6 col-sm-3">Squirt</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_squirt" id="gags_squirt" class="form-control" tabindex="8">>
@@ -157,7 +157,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="gags_drop" title="Drop" class="control-label col-xs-6 col-sm-3">Drop</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="gags_drop" id="gags_drop" class="form-control" tabindex="9">>
@@ -173,7 +173,7 @@
 			</div>
 
 			<h5>Cog Suits</h5>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="suit_sell" title="Sellbot Suit" class="control-label col-xs-6 col-sm-3">Sellbot</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="suit_sell" id="suit_sell" class="form-control" tabindex="10">
@@ -187,7 +187,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="suit_cash" title="Cashbot Suit" class="control-label col-xs-6 col-sm-3">Cashbot</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="suit_cash" id="suit_cash" class="form-control" tabindex="11">
@@ -201,7 +201,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="suit_law" title="Lawbot Suit" class="control-label col-xs-6 col-sm-3">Lawbot</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="suit_law" id="suit_law" class="form-control" tabindex="12">
@@ -215,7 +215,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<label for="suit_boss" title="Bossbot Suit" class="control-label col-xs-6 col-sm-3">Bossbot</label>
 				<div class="col-xs-6 col-sm-9">
 					<select name="suit_boss" id="suit_boss" class="form-control" tabindex="13">
@@ -230,7 +230,7 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group form-group-sm">
 				<div class="col-xs-6 col-sm-9 col-xs-offset-3 col-sm-offset-3">
 					<input type="submit" name="submit" value="Add Toon" class="btn btn-primary btn-block btn-lg" tabindex="14">
 				</div>

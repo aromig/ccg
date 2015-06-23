@@ -25,11 +25,11 @@
         <hr />
         <div class="tab-content">
             <div id="by_date" class="tab-pane fade in active form-inline">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="run_date" class="control-label" title="Run Date">Date</label>
                     <input type="text" name="run_date" id="run_date" tabindex="1" class="run_date form-control datepicker" style="cursor: pointer;" value="<?= date('m/d/Y') ?>" readonly>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="run_time" class="control-label" title="Run Time">Time</label>
                     <select name="run_time" id="run_time" tabindex="2" class="form-control">
 
@@ -43,7 +43,7 @@
                         <option value="BST">BST</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="battle_by_date" class="control-label" title="Battle">Battle</label>
                     <select name="battle_by_date" id="battle_by_date" tabindex="4" class="run_date form-control">
                         <option value=""></option>
@@ -53,17 +53,17 @@
                         <option value="ceo">CEO</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <button type="button" name="refresh_date" id="refresh_date" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
                 </div>
             </div>
 
             <div id="by_month" class="tab-pane fade form-inline">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="run_month" class="control-label" title="Run Month">Month</label>
                     <input type="text" name="run_month" id="run_month" tabindex="1" class="form-control datepicker" readonly>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="timezone_by_month" class="control-label" title="Timezone">Time Zone</label>
                     <select name="timezone_by_month" id="timezone_by_month" class="form-control" tabindex="2">
                         <option value="PT">Pacific</option>
@@ -74,7 +74,7 @@
                         <option value="BST">BST</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label for="battle_by_month" class="control-label" title="Battle">Battle</label>
                     <select name="battle_by_month" id="battle_by_month" tabindex="3" class="run_date form-control">
                         <option value=""></option>
@@ -84,7 +84,7 @@
                         <option value="ceo">CEO</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <button type="button" name="refresh_month" id="refresh_month" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
                 </div>
             </div>
@@ -116,7 +116,9 @@
     <script type="text/javascript" src="js/victories.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#run_date").datepicker();
+            $("#run_date").datepicker({
+                orientation: 'bottom'
+            });
             $("#run_month").datepicker({
                 changeMonth: true,
                 changeYear: true,
@@ -132,7 +134,7 @@
                 },
                 onClose: function(dateText, inst) {
                     var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-                    var year = $("#ui-datepicker div .ui-datepicker-year :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
                     $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
                 }
             }).focus(function(){

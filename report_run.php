@@ -241,13 +241,13 @@
 				<div class="tab-content">
 					<div id="vp" class="tab-pane fade in active">
 						<h4>Vice President</h4>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="vp_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
 								<input type="text" name="vp_date" id="vp_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="vp_time" title="VP Run Time" class="control-label col-xs-12 col-sm-3">Time:</label>
 							<div class="form-inline col-xs-12 col-sm-8">
 								<select name="vp_time" id="vp_time" class="form-control" tabindex="2" required oninvalid="this.setCustomValidity('Please select a run time.')" oninput="setCustomValidity('')">
@@ -264,7 +264,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="vp_reward" title="Toon Rescued" class="control-label col-xs-12 col-sm-3">Toon Rescued:</label>
 							<div class="col-xs-12 col-sm-3">
 								<select name="vp_reward" id="vp_reward" class="form-control" tabindex="4" required oninvalid="this.setCustomValidity('Please choose the toon you rescued.')" oninput="setCustomValidity('')">
@@ -279,13 +279,13 @@
 					</div>
 					<div id="cfo" class="tab-pane fade">
 						<h4>Chief Financial Officer</h4>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cfo_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
 								<input type="text" name="cfo_date" id="cfo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cfo_time" title="VP Run Time" class="control-label col-xs-12 col-sm-3">Time:</label>
 							<div class="form-inline col-xs-12 col-sm-8">
 								<select name="cfo_time" id="cfo_time" class="form-control" tabindex="2"ceo_ oninvalid="this.setCustomValidity('Please select a run time.')" oninput="setCustomValidity('')">
@@ -302,7 +302,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cfo_reward" title="Unite Phrase" class="control-label col-xs-12 col-sm-3">Unite Phrase:</label>
 							<div class="col-xs-12 col-sm-3">
 								<select name="cfo_reward" id="cfo_reward" class="form-control" tabindex="4"ceo_ oninvalid="this.setCustomValidity('Please choose the unite phrase you received.')" oninput="setCustomValidity('')">
@@ -317,13 +317,13 @@
 					</div>
 					<div id="cj" class="tab-pane fade">
 						<h4>Chief Justice</h4>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cj_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
 								<input type="text" name="cj_date" id="cj_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cj_time" title="VP Run Time" class="control-label col-xs-12 col-sm-3">Time:</label>
 							<div class="form-inline col-xs-12 col-sm-8">
 								<select name="cj_time" id="cj_time" class="form-control" tabindex="2"ceo_ oninvalid="this.setCustomValidity('Please select a run time.')" oninput="setCustomValidity('')">
@@ -340,7 +340,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="cj_reward" title="Cog Summons" class="control-label col-xs-12 col-sm-3">Cog Summons:</label>
 							<div class="col-xs-12 col-sm-3">
 								<select name="cj_reward" id="cj_reward" class="form-control" tabindex="4"ceo_ oninvalid="this.setCustomValidity('Please choose the cog summons you received.')" oninput="setCustomValidity('')">
@@ -355,13 +355,13 @@
 					</div>
 					<div id="ceo" class="tab-pane fade">
 						<h4>Chief Executive Officer</h4>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="ceo_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
 								<input type="text" name="ceo_date" id="ceo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="ceo_time" title="VP Run Time" class="control-label col-xs-12 col-sm-3">Time:</label>
 							<div class="form-inline col-xs-12 col-sm-8">
 								<select name="ceo_time" id="ceo_time" class="form-control" tabindex="2"ceo_ oninvalid="this.setCustomValidity('Please select a run time.')" oninput="setCustomValidity('')">
@@ -378,7 +378,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label for="ceo_reward" title="Pink Slip" class="control-label col-xs-12 col-sm-3">Pink Slip:</label>
 							<div class="col-xs-12 col-sm-3">
 								<select name="ceo_reward" id="ceo_reward" class="form-control" tabindex="4"ceo_ oninvalid="this.setCustomValidity('Please choose the pink slip you received.')" oninput="setCustomValidity('')">
@@ -392,7 +392,7 @@
 						</div>
 					</div>
 				</div>
-					<div class="form-group">
+					<div class="form-group form-group-sm">
 						<label for="loaded" title="Toons Loaded" class="control-label col-xs-12 col-sm-3"># Toons Loaded:</label>
 						<div class="col-xs-4 col-sm-2">
 							<select name="loaded" id="loaded" class="form-control" tabindex="5" required oninvalid="this.setCustomValidity('How many toons loaded into the elevator?')" oninput="setCustomValidity('')">
@@ -401,7 +401,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group form-group-sm">
 						<label for="danced" title="Toons Danced" class="control-label col-xs-12 col-sm-3"># Toons Danced:</label>
 						<div class="col-xs-4 col-sm-2">
 							<select name="danced" id="danced" class="form-control" tabindex="5" required oninvalid="this.setCustomValidity('How many toons danced at the end of the battle?')" oninput="setCustomValidity('')">
@@ -414,9 +414,9 @@
 					<div id="toon_1" class="col-xs-12 toon_info">
 						<div class="toon_no">1.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_1" id="toon_1" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_1" id="laff_1" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_1" id="suit_1" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_1" id="toon_1" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_1" id="laff_1" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_1" id="suit_1" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -424,12 +424,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_1" id="suitlevel_1" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_1" id="suitlevel_1" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_1" id="status_1" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_1" id="status_1" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -453,9 +453,9 @@
 					<div id="toon_2" class="col-xs-12 toon_info">
 						<div class="toon_no">2.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_2" id="toon_2" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_2" id="laff_2" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_2" id="suit_2" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_2" id="toon_2" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_2" id="laff_2" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_2" id="suit_2" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -463,12 +463,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_2" id="suitlevel_2" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_2" id="suitlevel_2" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_2" id="status_2" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_2" id="status_2" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -492,9 +492,9 @@
 					<div id="toon_3" class="col-xs-12 toon_info">
 						<div class="toon_no">3.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_3" id="toon_3" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_3" id="laff_3" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_3" id="suit_3" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_3" id="toon_3" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_3" id="laff_3" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_3" id="suit_3" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -502,12 +502,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_3" id="suitlevel_3" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_3" id="suitlevel_3" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_3" id="status_3" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_3" id="status_3" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -531,9 +531,9 @@
 					<div id="toon_4" class="col-xs-12 toon_info">
 						<div class="toon_no">4.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_4" id="toon_4" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_4" id="laff_4" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_4" id="suit_4" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_4" id="toon_4" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_4" id="laff_4" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_4" id="suit_4" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -541,12 +541,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_4" id="suitlevel_4" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_4" id="suitlevel_4" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_4" id="status_4" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_4" id="status_4" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -570,9 +570,9 @@
 					<div id="toon_5" class="col-xs-12 toon_info">
 						<div class="toon_no">5.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_5" id="toon_5" placeholder="Name" class="col-xs-8 col-xs-4 form_field"> 
-							<input type="text" name="laff_5" id="laff_5" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_5" id="suit_5" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_5" id="toon_5" placeholder="Name" class="col-xs-8 col-xs-4 form_field input-sm"> 
+							<input type="text" name="laff_5" id="laff_5" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_5" id="suit_5" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -580,12 +580,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_5" id="suitlevel_5" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_5" id="suitlevel_5" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_5" id="status_5" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_5" id="status_5" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -609,9 +609,9 @@
 					<div id="toon_6" class="col-xs-12 toon_info">
 						<div class="toon_no">6.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_6" id="toon_6" placeholder="Name" class="col-xs-8 col-xs-4 form_field"> 
-							<input type="text" name="laff_6" id="laff_6" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_6" id="suit_6" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_6" id="toon_6" placeholder="Name" class="col-xs-8 col-xs-4 form_field input-sm"> 
+							<input type="text" name="laff_6" id="laff_6" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_6" id="suit_6" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -619,12 +619,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_6" id="suitlevel_6" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_6" id="suitlevel_6" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_6" id="status_6" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_6" id="status_6" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -648,9 +648,9 @@
 					<div id="toon_7" class="col-xs-12 toon_info">
 						<div class="toon_no">7.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_7" id="toon_7" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_7" id="laff_7" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_7" id="suit_7" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_7" id="toon_7" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_7" id="laff_7" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_7" id="suit_7" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -658,12 +658,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_7" id="suitlevel_7" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_7" id="suitlevel_7" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_7" id="status_7" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_7" id="status_7" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -687,9 +687,9 @@
 					<div id="toon_8" class="col-xs-12 toon_info">
 						<div class="toon_no">8.</div>
 						<div class="form-inline col-xs-12">
-							<input type="text" name="toon_8" id="toon_8" placeholder="Name" class="col-xs-8 col-sm-4 form_field"> 
-							<input type="text" name="laff_8" id="laff_8" placeholder="Laff" class="col-xs-3 col-sm-2 form_field">
-							<select name="suit_8" id="suit_8" class="col-xs-8 col-sm-3 form_field suit">
+							<input type="text" name="toon_8" id="toon_8" placeholder="Name" class="col-xs-8 col-sm-4 form_field input-sm"> 
+							<input type="text" name="laff_8" id="laff_8" placeholder="Laff" class="col-xs-3 col-sm-2 form_field input-sm">
+							<select name="suit_8" id="suit_8" class="col-xs-8 col-sm-3 form_field input-sm suit">
 								<option value="">Suit</option>
 								<?php
 									foreach ($tt->cogsuits["sellbot"] as $suit) {
@@ -697,12 +697,12 @@
 									}
 								?>
 							</select>
-							<select name="suitlevel_8" id="suitlevel_8" class="col-xs-3 col-sm-1 form_field">
+							<select name="suitlevel_8" id="suitlevel_8" class="col-xs-3 col-sm-1 form_field input-sm">
 
 							</select>
 						</div>
 						<div class="form-inline col-xs-12">
-							<select name="status_8" id="status_8" class="col-xs-6 col-sm-3 form_field">
+							<select name="status_8" id="status_8" class="col-xs-6 col-sm-3 form_field input-sm">
 								<option value="Danced">Danced</option>
 								<option value="Sad in Cog Round">Sad in Cog Round</option>
 								<option value="Sad in Skele Round">Sad in Skele Round</option>
@@ -730,7 +730,7 @@
 							<textarea name="notes" id="notes" rows="4" class="form-control"></textarea>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group form-group-sm">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-3 col-md-3 centered">
 							<input type="submit" name="" id="submit" class="btn btn-lg btn-primary" value="Submit Victory Results">
 						</div>
