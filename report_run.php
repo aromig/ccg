@@ -21,7 +21,8 @@
 				$run_datetime = strtotime($run_datetime);
 				$run_datetime = date("Y-m-d H:i:s", $run_datetime);
 			$loaded = intval($_POST['loaded']);
-			$danced = intval($_POST['danced']);
+			//$danced = intval($_POST['danced']);
+			$danced = 0;
 			$disco = 0;
 			$notes = $_POST['notes'];
 			$tzone = $_POST[$btl.'timezone'];
@@ -47,9 +48,8 @@
 				$toons[$i]["coground"] = ($_POST['coground_'.$i] == "1") ? 1 : 0;
 				$toons[$i]["skeleround"] = ($_POST['skeleround_'.$i] == "1") ? 1 : 0;
 				$toon_json[$i] = json_encode($toons[$i]);
-				if ($toons[$i]["status"] == "Disconnected") {
-					$disco++;
-				}
+				if ($toons[$i]["status"] == "Danced") { $danced++; }
+				if ($toons[$i]["status"] == "Disconnected") { $disco++; }
 			}
 
 			$loaded -= $disco;
@@ -215,7 +215,7 @@
 					<ul><li>Times are generated from the <a href="schedule.php" target="_blank">Run Schedule</a> depending on the day of the week you choose.</li></ul></li>
 				<li>Select the reward given at the end of the boss battle.</li>
 				<li>Select the number of toons that loaded onto the elevator and how many danced at the end.
-					<ul><li>Please use the correct number of toons that loaded and danced. If a toon disconnected during the fight, it will be accounted for when the victory results are generated as long as you choose "Disconnected" instead of "Danced".</li></ul></li>
+					<ul><li>Please use the correct number of toons that loaded. If a toon disconnected during the fight, it will be accounted for when the victory results are generated as long as you choose "Disconnected" instead of "Danced".</li></ul></li>
 				<li>Enter the toons' information to the best of your ability.</li>
 				<li>Enter any notes or thoughts about the battle.</li>
 				<li>Submit your report and you will be given the opportunity to copy it to the appropriate Run Report thread on the forum.</li>
@@ -401,7 +401,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group form-group-sm">
+					<!--div class="form-group form-group-sm">
 						<label for="danced" title="Toons Danced" class="control-label col-xs-12 col-sm-3"># Toons Danced:</label>
 						<div class="col-xs-4 col-sm-2">
 							<select name="danced" id="danced" class="form-control" tabindex="5" required oninvalid="this.setCustomValidity('How many toons danced at the end of the battle?')" oninput="setCustomValidity('')">
@@ -409,7 +409,7 @@
 								<?php for ($i=1;$i<=8;$i++) { echo '<option value="'.$i,'">'.$i.'</option>'; } ?>
 							</select>
 						</div>
-					</div>
+					</div-->
 <!-- BEGIN TOON INPUT AREA -->
 					<div id="toon_1" class="col-xs-12 toon_info">
 						<div class="toon_no">1.</div>
