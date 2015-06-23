@@ -106,9 +106,7 @@
 	</div>
     </div>
 
-    <footer class="container centered">
-        
-    </footer>
+<?php include_once('./tpl/footer.php'); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
