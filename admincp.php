@@ -140,7 +140,7 @@
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-list-alt"></span> <strong>Reports</strong><br />
-                                    View &amp; Edit Run Reports for Erroneous Data.
+                                    View &amp; Edit Run Reports for erroneous data.
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-calendar"></span> <strong>Schedule</strong><br />
@@ -411,6 +411,11 @@
                                 <button type="submit" id="save_toon" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-ok"></span> Save</button>
                             </div>
                         </div>
+                        <div class="form-group col-xs-6">
+                            <div class="col-xs-4 col-xs-offset-8 col-md-3 col-md-offset-9 col-lg-2 col-lg-ffset-10">
+                                <button type="button" id="trash_toon" class="btn btn-danger btn-block" style="padding-left: 0; padding-right: 0;"><span class="glyphicon glyphicon-trash" title="Delete Toon"></span></button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -596,9 +601,7 @@
 	</div>
     </div>
 
-    <footer class="container centered">
-        
-    </footer>
+<?php include_once('./tpl/footer.php'); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -661,6 +664,25 @@
                 if (!response) {
                     return false;
                 }
+            }
+        });
+
+        $("#trash_toon").click(function(){
+            var toonid = $("#toon_id").val();
+            var toonname = $("#toon").val();
+            var response = confirm("You are about to delete this toon. This operation cannot be undone.\r\n\r\nAre you sure you want to do this?");
+            if (!response) {
+                return false;
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "cp_del_toon.php",
+                    data: "toon_id="+toonid+"&toon="+toonname,
+                    success: function(html){
+                        $("#toon_results").html(html);
+                        $("#toon_details").hide();
+                    }
+                });
             }
         });
 
