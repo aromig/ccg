@@ -20,7 +20,7 @@
 			$disco = 0;
 
 			$toon = array();
-			for ($i=1;$i<=intval($report['toons_loaded']);$i++) {
+			for ($i=1;$i<=8;$i++) {
 				$toon[$i] = json_decode($report['toon_'.$i], true);
 				if ($toon[$i]['status'] == "Disco'd") { $disco++; }
 			}
