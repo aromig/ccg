@@ -25,8 +25,9 @@
 .report { position: relative; }
 .edit_report { position: absolute; bottom: 0; right: 0; }
 #edit_report {
-    position: absolute;
+    position: fixed;
     display: none;
+    overflow-y: auto;
     width: 80%;
     height: 90%;
     top: 50%;

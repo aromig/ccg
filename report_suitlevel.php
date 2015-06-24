@@ -7,8 +7,10 @@
 	$suit = $_POST['suit'];
 
 	$html .= '<option value=""></option>';
-	foreach ($tt->suit_levels[$suit] as $level) {
-		$html .= '<option value="'.$level.'">'.$level.'</option>';
+	if ($suit != '') {
+		foreach ($tt->suit_levels[$suit] as $level) {
+			$html .= '<option value="'.$level.'">'.$level.'</option>';
+		}
 	}
 
 	echo $html;

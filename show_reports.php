@@ -24,7 +24,7 @@
 			$toon = array();
 			for ($i=1;$i<=8;$i++) {
 				$toon[$i] = json_decode($report['toon_'.$i], true);
-				if ($toon[$i]['status'] == "Disco'd") { $disco++; }
+				if ($toon[$i]['status'] == "Disconnected") { $disco++; }
 			}
 
 			$loaded = intval($report['toons_loaded']) - $disco;
@@ -94,7 +94,7 @@
 				<p><?= nl2br($report['notes']) ?></p>
 			</div>
 			<?php
-				if ($report['mcf_username'] == $_SESSION['user']) {
+				if ($report['mcf_username'] == $_SESSION['user'] || $ccg->is_admin($_SESSION['user'])) {
 			?>
 				<a href="#" id="<?= $report['result_id'].'_'.$timezone ?>" class="edit_report"><img src="images/cog_35x35.png" alt="Edit Report" /></a>
 			<?php }

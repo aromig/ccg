@@ -6,7 +6,7 @@
 	$html = '';
 	$battle = $_POST['battle'];
 
-	switch ($battle) {
+	switch (strtolower($battle)) {
 		case 'vp': $cog = 'sellbot'; break;
 		case 'cfo': $cog = 'cashbot'; break;
 		case 'cj': $cog = 'lawbot'; break;
