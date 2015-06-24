@@ -93,6 +93,12 @@
 				<?= ($report["battle"] == 'VP') ? '<p>* Together in Skelecog Round</p>' : '' ?>
 				<p><?= nl2br($report['notes']) ?></p>
 			</div>
+			<?php
+				if ($report['mcf_username'] == $_SESSION['user']) {
+			?>
+				<a href="#" id="<?= $report['result_id'].'_'.$timezone ?>" class="edit_report"><img src="images/cog_35x35.png" alt="Edit Report" /></a>
+			<?php }
+			?>
 		</div>
 	<?php
 		}

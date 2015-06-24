@@ -95,9 +95,58 @@
     </div>
 </div>
 
-<?php
-    }
-?>
+<div id="edit_report">
+    <h3>Edit Report</h3>
+    <form action="save_report.php" class="form-horizontal">
+        <input type="hidden" id="edit_report_id">
+        <div class="col-xs-12">
+            <div class="form-group form-group-sm">
+                <label for="edit_battle" title="Battle" class="control-label col-xs-12 col-sm-3">Battle:</label>
+                <div class="col-xs-12 col-sm-3">
+                    <select name="edit_battle" id="edit_battle" class="form-control run_date">
+                        <?php
+                            foreach ($tt->prior_run_length as $battle => $length) {
+                                echo '<option value="'.$battle.'">'.$battle.'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="edit_date" title="Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
+                <div class="col-xs-12 col-sm-3">
+                    <input type="text" name="edit_date" id="edit_date" class="run_date form-control datepicker" style="cursor: pointer;" readonly>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="edit_time" title="Run Time" class="control-label col-xs-12 col-sm-3">Time:</label>
+                <div class="form-inline col-xs-12 col-sm-8">
+                    <select name="edit_time" id="edit_time" class="form-control" required oninvalid="this.setCustomValidity('Please select a run time.')" oninput="setCustomValidity('')">
+
+                    </select>
+                    <select name="edit_timezone" id="edit_timezone" class="run_date form-control">
+                        <option value="PT">Pacific</option>
+                        <option value="MT">Mountain</option>
+                        <option value="CT">Central</option>
+                        <option value="ET">Eastern</option>
+                        <option value="GMT">GMT</option>
+                        <option value="BST">BST</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label for="edit_reward" title="Reward" class="control-label col-xs-12 col-sm-3">Reward:</label>
+                <div class="col-xs-12 col-sm-3">
+                    <select name="edit_reward" id="edit_reward" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php } ?>
 
 <!-- footer -->
 	</div>
@@ -114,6 +163,7 @@
     <script type="text/javascript" src="js/victories.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            $("#edit_date").datepicker();
             $("#run_date").datepicker({
                 orientation: 'bottom'
             });
@@ -142,6 +192,68 @@
                     at: "center bottom",
                     of: $(this)
                 });
+            });
+
+            var getRunTimes = function(select_ctl) {
+                var battle = $("#edit_battle").val();
+                var date_val = $("#edit_date").val();
+                var time_val = $("#edit_time").val();
+                var tz = $("#edit_timezone").val();
+                $.ajax({
+                    type: "POST",
+                    url: "run_times.php",
+                    data: "battle="+battle+"&date="+date_val+"&tz="+tz,
+                    success: function(html){
+                        $("#"+select_ctl).html(html);
+                        $("#"+select_ctl).val(time_val);
+                    }
+                });
+            }
+
+            $(".run_date").change(function(){
+                getRunTimes("edit_time");
+            });
+
+            var loadRewards = function(battle){
+                $.ajax({
+                    type: "POST",
+                    url: "battle_rewards.php",
+                    data: "battle="+battle,
+                    success: function(html){
+                        $("#edit_reward").html(html);
+                    }
+                });
+            }
+
+            $("#edit_battle").change(function(){
+                var battle = $(this).val();
+                loadRewards(battle);
+            });
+
+            $("#show_reports").on('click', '.edit_report', function(){
+                var callid = $(this).prop("id").split("_");
+                var resultid = callid[0];
+                var tz = callid[1];
+                $("#edit_report_id").val(resultid);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "edit_report.php",
+                    data: "resultid="+resultid,
+                    success: function(json){
+                        console.log(json);
+                        var report = $.parseJSON(json);
+                        console.log(report.toon_1);
+                        var datetime = new Date(report.run_datetime);
+                        $("#edit_date").val((datetime.getMonth()+1)+'/'+datetime.getDate()+'/'+datetime.getFullYear());
+                        $("#edit_timezone").val(tz);
+                        getRunTimes("edit_time");
+                        var time = (datetime.getHours() < 12 ? '0'+datetime.getHours() : datetime.getHours())+':'+(datetime.getMinutes() < 10 ? '0'+datetime.getMinutes() : datetime.getMinutes())+(datetime.getHours() < 12 ? ' AM' : ' PM');
+                        var battle = $("#edit_battle").val();
+                        loadRewards(battle);
+                    }
+                });
+                $("#edit_report").fadeIn("normal");
             });
         });
     </script>

@@ -21,7 +21,39 @@
 
     <!-- Main Stylesheet -->
     <link href="css/ccg.css" rel="stylesheet">
-
+<style>
+.report { position: relative; }
+.edit_report { position: absolute; bottom: 0; right: 0; }
+#edit_report {
+    position: absolute;
+    display: none;
+    width: 80%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #aaa;
+    z-index: 1000;
+    -moz-border-radius: 10px;
+    -moz-box-shadow: 0px 7px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 0px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 7px rgba(0, 0, 0, 0.25);
+}
+#edit_report h3 {
+    margin-top: 0px;
+    color: #fff;
+    background-color: #428bca;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+    padding: 15px 0;
+}
+</style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
