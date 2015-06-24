@@ -76,7 +76,7 @@ class ToonTown {
 
 	public $suit_milestones = array(
 		1=>array("Cold Caller"=>"First Win!", "Short Change"=>"First Win!", "Bottom Feeder"=>"First Win!", "Flunky"=>"First Win!"),
-		11=>array("Mr. Hollywood"=>"TP Access to VP!", "Robber Baron"=>"TP Access to CFO!", "Big Wig"=>"TP Access to CJ!", "The Big Cheese"=>"TP Access to CEO!"),
+		12=>array("Mr. Hollywood"=>"TP Access to VP!", "Robber Baron"=>"TP Access to CFO!", "Big Wig"=>"TP Access to CJ!", "The Big Cheese"=>"TP Access to CEO!"),
 		14=>array("Mr. Hollywood"=>"Laff Boost!", "Robber Baron"=>"Laff Boost!", "Big Wig"=>"Laff Boost!", "The Big Cheese"=>"Laff Boost!"),
 		19=>array("Mr. Hollywood"=>"Laff Boost!", "Robber Baron"=>"Laff Boost!", "Big Wig"=>"Laff Boost!", "The Big Cheese"=>"Laff Boost!"),
 		29=>array("Mr. Hollywood"=>"Laff Boost!", "Robber Baron"=>"Laff Boost!", "Big Wig"=>"Laff Boost!", "The Big Cheese"=>"Laff Boost!"),
