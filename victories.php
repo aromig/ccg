@@ -194,10 +194,10 @@
                 });
             });
 
-            var getRunTimes = function(select_ctl) {
+            var getRunTimes = function(select_ctl, report_value) {
                 var battle = $("#edit_battle").val();
                 var date_val = $("#edit_date").val();
-                var time_val = $("#edit_time").val();
+                var time_val = (report_value == '') ? $("#edit_time").val() : report_value;
                 var tz = $("#edit_timezone").val();
                 $.ajax({
                     type: "POST",
@@ -211,24 +211,38 @@
             }
 
             $(".run_date").change(function(){
-                getRunTimes("edit_time");
+                getRunTimes("edit_time", "");
             });
 
-            var loadRewards = function(battle){
+            var loadRewards = function(battle, value){
                 $.ajax({
                     type: "POST",
                     url: "battle_rewards.php",
                     data: "battle="+battle,
                     success: function(html){
                         $("#edit_reward").html(html);
+                        $("#edit_reward").val(value);
                     }
                 });
             }
 
             $("#edit_battle").change(function(){
                 var battle = $(this).val();
-                loadRewards(battle);
+                loadRewards(battle, '');
             });
+
+            var populateForm = function(json, tz) {
+                var report = $.parseJSON(json);
+                //console.log(report.toon_1);
+                var datetime = new Date(report.run_datetime);
+                $("#edit_date").val((datetime.getMonth()+1)+'/'+datetime.getDate()+'/'+datetime.getFullYear());
+                $("#edit_timezone").val(tz);
+                
+                var time = (datetime.getHours() < 12 ? '0'+datetime.getHours() : datetime.getHours())+':'+(datetime.getMinutes() < 10 ? '0'+datetime.getMinutes() : datetime.getMinutes())+(datetime.getHours() < 12 ? ' AM' : ' PM');
+                getRunTimes("edit_time", time);
+                var battle = report.battle;
+                loadRewards(battle, report.reward);
+            }
 
             $("#show_reports").on('click', '.edit_report', function(){
                 var callid = $(this).prop("id").split("_");
@@ -242,15 +256,7 @@
                     data: "resultid="+resultid,
                     success: function(json){
                         console.log(json);
-                        var report = $.parseJSON(json);
-                        console.log(report.toon_1);
-                        var datetime = new Date(report.run_datetime);
-                        $("#edit_date").val((datetime.getMonth()+1)+'/'+datetime.getDate()+'/'+datetime.getFullYear());
-                        $("#edit_timezone").val(tz);
-                        getRunTimes("edit_time");
-                        var time = (datetime.getHours() < 12 ? '0'+datetime.getHours() : datetime.getHours())+':'+(datetime.getMinutes() < 10 ? '0'+datetime.getMinutes() : datetime.getMinutes())+(datetime.getHours() < 12 ? ' AM' : ' PM');
-                        var battle = $("#edit_battle").val();
-                        loadRewards(battle);
+                        populateForm(json, tz);
                     }
                 });
                 $("#edit_report").fadeIn("normal");
