@@ -67,7 +67,7 @@
 				"ccg_id"=>$ccgid[0]['ccg_id'],
 				"battle"=>$battle,
 				"run_datetime"=>$run_datetime,
-				"toons_loaded"=>$loaded,
+				"toons_loaded"=>intval($_POST['loaded']),
 				"toons_danced"=>$danced,
 				"notes"=>$notes,
 				"reward"=>$reward,
