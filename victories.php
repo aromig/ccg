@@ -11,6 +11,52 @@
 
 <?php
     } else {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $report_id = $_POST['edit_report_id'];
+            $battle = $_POST['edit_battle'];
+            $run_datetime = $_POST['edit_date'].' '.$_POST['edit_time'];
+                $run_datetime = strtotime($run_datetime);
+                $run_datetime = date("Y-m-d H:i:s", $run_datetime);
+            $loaded = intval($_POST['edit_loaded']);
+            $danced = 0;
+            $notes = $_POST['edit_notes'];
+            $reward = $_POST['edit_reward'];
+
+            $toons = array();
+            for ($i=1;$i<=$loaded;$i++) {
+                $toons[$i]["name"] = (!empty($_POST['edit_toon_'.$i])) ? $_POST['edit_toon_'.$i] : 'Unknown';
+                $toons[$i]["laff"] = (!empty($_POST['edit_laff_'.$i])) ? $_POST['edit_laff_'.$i] : null;
+                $toons[$i]["suit"] = (!empty($_POST['edit_suit_'.$i])) ? $_POST['edit_suit_'.$i] : null;
+                $toons[$i]["suitlevel"] = (!empty($_POST['edit_suitlevel_'.$i])) ? $_POST['edit_suitlevel_'.$i] : null;
+                $toons[$i]["status"] = $_POST['edit_status_'.$i];
+                $toons[$i]["coground"] = ($_POST['edit_coground_'.$i] == "1") ? 1 : 0;
+                $toons[$i]["skeleround"] = ($_POST['edit_skeleround_'.$i] == "1") ? 1 : 0;
+                $toon_json[$i] = json_encode($toons[$i]);
+                if ($toons[$i]["status"] == "Danced") { $danced++; }
+            }
+
+                $columns = array(
+                    "battle"=>$battle,
+                    "run_datetime"=>$run_datetime,
+                    "toons_loaded"=>$loaded,
+                    "toons_danced"=>$danced,
+                    "notes"=>$notes,
+                    "reward"=>$reward,
+                    "updated_dt"=>date("Y-m-d H:i:s")
+                );
+                for ($i=1;$i<=8;$i++) {
+                    if (!empty($toon_json[$i])) {
+                        $columns["toon_".$i] = $toon_json[$i];
+                    }
+                }
+
+                $stmt = $db->update("ccg_ttr_results",
+                    $columns,
+                    array("result_id"=>$report_id)
+                );
+
+                if ($stmt) { $message = '<h5>Run Report Updated!</h5>'; }
+        }
 
 ?>
 
@@ -92,14 +138,17 @@
     </div>
     <div class="col-xs-12" id="show_reports" style="margin-top: 6px;">
         <!-- Populate results in this panel via AJAX -->
+        <?php
+            if (!empty($message)) { echo $message; }
+        ?>
     </div>
 </div>
 
 <div id="edit_report">
     <button type="button" id="closeEdit" class="btn btn-lg" style="background: none; color: #fff; position: absolute; top: 0; right: 0;"><span class="glyphicon glyphicon-remove"></span></button>
     <h3>Edit Report</h3>
-    <form action="save_report.php" class="form-horizontal">
-        <input type="hidden" id="edit_report_id">
+    <form role="form" method="post" action="" class="form-horizontal">
+        <input type="hidden" id="edit_report_id" name="edit_report_id">
         <div class="col-xs-12 col-sm-6">
             <div class="form-group form-group-sm">
                 <label for="edit_battle" title="Battle" class="control-label col-xs-12 col-sm-4">Battle:</label>
@@ -150,7 +199,7 @@
                 <div class="col-xs-12 col-sm-7">
                     <select name="edit_loaded" id="edit_loaded" class="form-control" tabindex="5" required oninvalid="this.setCustomValidity('How many toons loaded into the elevator?')" oninput="setCustomValidity('')">
                         <option value=""></option>
-                        <?php for ($i=1;$i<=8;$i++) { echo '<option value="'.$i,'">'.$i.'</option>'; } ?>
+                        <?php for ($i=1;$i<=8;$i++) { echo '<option value="'.$i.'">'.$i.'</option>'; } ?>
                     </select>
                 </div>
             </div>
@@ -451,6 +500,13 @@
             </div>
         </div>
 
+        <div class="col-xs-12">
+            <label for="edit_notes" title="Notes" class="control-label col-xs-12 col-sm-3">Notes:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea name="edit_notes" id="edit_notes" rows="4" class="form-control"></textarea>
+            </div>
+        </div>
+
         <div class="col-xs-12 col-sm-4 col-sm-offset-4">
             <div class="form-group">
                 <button type="submit" name="submitEdit" id="submitEdit" class="btn btn-primary form-control"><span class="glyphicon glyphicon-ok"></span> Save Report</button>
@@ -674,6 +730,7 @@
                         }
                     }
                 }, 500);
+                $("#edit_notes").val(report.notes);
             }
 
             $("#show_reports").on('click', '.edit_report', function(){
@@ -703,6 +760,32 @@
                         $("#edit_"+i).show();
                     }
                 }
+            });
+
+            $('input[type=checkbox]').change(function(){
+                var $box = $(this);
+                if ($box.prop('checked')) {
+                    var group = "input:checkbox[name='"+$box.prop("name").substring(0, $box.prop("name").lastIndexOf("_")+1);
+                    var count = 0;
+                    for (i=1;i<=8;i++) {
+                        var boxname = group+i+"']";
+                        if ($(boxname).prop('checked')) {
+                            count++;
+                        }
+                    }
+                    if (count > 4) {
+                        $box.parent().tooltip({
+                            title: "Cannot select more than four toons for this group.",
+                            trigger: "click"
+                        }).tooltip('show');
+                        setTimeout(function(){$box.parent().tooltip('hide').tooltip('destroy')}, 3000);
+
+                        $box.prop('checked', false);
+                        $box.parent().toggleClass('active');
+                        $box.blur();
+                    }
+                }
+                $box.blur();
             });
 
         });
