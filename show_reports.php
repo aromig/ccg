@@ -96,7 +96,10 @@
 			<?php
 				if ($report['mcf_username'] == $_SESSION['user'] || $ccg->is_admin($_SESSION['user'])) {
 			?>
-				<a href="#" id="<?= $report['result_id'].'_'.$timezone ?>" class="edit_report"><img src="images/cog_35x35.png" alt="Edit Report" /></a>
+				<a href="#" id="<?= $report['result_id'].'_'.$timezone ?>" class="edit_report" title="Edit Report"><img src="images/cog_35x35.png" alt="Edit Report" /></a>
+			<?php }
+				if ($ccg->is_admin($_SESSION['user'])) { ?>
+				<a href="#" id="delete_<?= $report['result_id'] ?>" class="delete_report" title="Delete Report"><img src="images/delete.png" alt="Delete Report" /></a>
 			<?php }
 			?>
 		</div>

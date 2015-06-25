@@ -515,6 +515,25 @@
     </form>
 </div>
 
+<div id="delete_report">
+    <h3>Delete Report</h3>
+    <div class="err" id="add_err"></div>
+    <form action="delete_report.php">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="centered">Are you sure you want to delete this report?</h4>
+                <input type="hidden" name="delete_result_id" id="delete_result_id">
+                <div class="col-xs-5 col-xs-offset-1">
+                    <input type="submit" id="confirm_delete" value="Yes" class="btn btn-primary btn-block btn-lg">
+                </div>
+                <div class="col-xs-5">
+                    <input type="button" id="cancel_delete" value="No" class="btn btn-danger btn-block btn-lg">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 <?php } ?>
 
 <!-- footer -->
@@ -786,6 +805,40 @@
                     }
                 }
                 $box.blur();
+            });
+
+            $("#delete_report").hide();
+            $("#show_reports").on('click', '.delete_report', function(){
+                var report_id = $(this).prop("id").split("_");
+                var resultid = report_id[1];
+                $("#delete_result_id").val(resultid);
+                $("#delete_report").show();
+                return false;
+            });
+
+            $("#cancel_delete").click(function(){
+                $("#delete_report").hide();
+            });
+
+            $("#confirm_delete").click(function(){
+                var resultid = $("#delete_result_id").val();
+                $.ajax({
+                    type: "POST",
+                    url: "delete_report.php",
+                    data: "result_id="+resultid,
+                    success: function(html) {
+                        if (html == 'true') {
+                            $("#delete_report").fadeOut("normal");
+                            location.href = "victories.php";
+                        } else {
+                            $("#add_err").html("Hmm... Something didn't go right...");
+                        }
+                    },
+                    beforeSend: function() {
+                        $("#add_err").html("Deleting...");
+                    }
+                });
+                return false;
             });
 
         });

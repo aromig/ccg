@@ -21,9 +21,9 @@ $(document).ready(function(){
 			success: function(html) {
 				if (html == 'true') {
 					$("#delete_toon").fadeOut("normal");
-					location.href ="profile.php";
+					location.href = "profile.php";
 				} else {
-					$("add_err").html("Hmm... Something didn't go right...");
+					$("#add_err").html("Hmm... Something didn't go right...");
 				}
 			},
 			beforeSend: function() {
