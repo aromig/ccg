@@ -76,6 +76,13 @@ class ToonTown {
 
 	public $suit_milestones = array(
 		1=>array("Cold Caller"=>"First Win!", "Short Change"=>"First Win!", "Bottom Feeder"=>"First Win!", "Flunky"=>"First Win!"),
+		5=>array("Cold Caller"=>"Promotion to Telemarketer!", "Short Change"=>"Promotion to Penny Pincher!", "Bottom Feeder"=>"Promotion to Bloodsucker!", "Flunky"=>"Promotion to Pencil Pusher!"),
+		6=>array("Telemarketer"=>"Promotion to Name Dropper!", "Penny Pincher"=>"Promotion to Tightwad!","Bloodsucker"=>"Promotion to Double Talker!", "Pencil Pusher"=>"Promotion to Yesman!"),
+		7=>array("Name Dropper"=>Promotion to "Glad Hander", "Tightwad"=>"Promotion to Bean Counter!", "Double Talker"=>"Promotion to Ambulance Chaser!", "Yesman"=>"Promotion to Micromanager!"),
+		8=>array("Glad Hander"=>"Promotion to Mover & Shaker", "Bean Counter"=>"Promotion to Number Cruncher!", "Ambulance Chaser"=>"Promotion to Back Stabber!", "Micromanager"=>"Promotion to Downsizer"),
+		9=>array("Mover & Shaker"=>"Promotion to Two-Face!", "Number Cruncher"=>"Promotion to Money Bags!", "Back Stabber"=>"Promotion to Spin Doctor!", "Downsizer"=>"Promotion to Head Hunter!"),
+		10=>array("Two-Face"=>"Promotion to The Mingler!", "Money Bags"=>"Promotion to Loan Shark!", "Spin Doctor"=>"Promotion to Legal Eagle!", "Head Hunter"=>"Promotion to Corporate Raider!"),
+		11=>array("The Mingler"=>"Promotion to Mr. Hollywood!", "Loan Shark"=>"Promotion to Robber Baron!", "Legal Eagle"=>"Promotion to Big Wig!", "Corporate Raider"=>"Promotion to The Big Cheese!"),
 		12=>array("Mr. Hollywood"=>"TP Access to VP!", "Robber Baron"=>"TP Access to CFO!", "Big Wig"=>"TP Access to CJ!", "The Big Cheese"=>"TP Access to CEO!"),
 		14=>array("Mr. Hollywood"=>"Laff Boost!", "Robber Baron"=>"Laff Boost!", "Big Wig"=>"Laff Boost!", "The Big Cheese"=>"Laff Boost!"),
 		19=>array("Mr. Hollywood"=>"Laff Boost!", "Robber Baron"=>"Laff Boost!", "Big Wig"=>"Laff Boost!", "The Big Cheese"=>"Laff Boost!"),
