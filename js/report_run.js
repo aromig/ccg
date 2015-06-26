@@ -47,8 +47,36 @@ $(document).ready(function(){
 			$("#skeleround_1,#skeleround_2,#skeleround_3,#skeleround_4,#skeleround_5,#skeleround_6,#skeleround_7,#skeleround_8").each(function(){
 				$(this).parent().show();
 			});
+			$("#cleanupround_1,#cleanupround_2,#cleanupround_3,#cleanupround_4,#cleanupround_5,#cleanupround_6,#cleanupround_7,#cleanupround_8").each(function(){
+				$(this).parent().hide();
+				if ($(this).prop('checked')) {
+					$(this).prop('checked', false);
+					$(this).parent().toggleClass('active');
+					$(this).blur();
+				}
+			});
+		} else if (target == 'ceo_') {
+			$("#cleanupround_1,#cleanupround_2,#cleanupround_3,#cleanupround_4,#cleanupround_5,#cleanupround_6,#cleanupround_7,#cleanupround_8").each(function(){
+				$(this).parent().show();
+			});
+			$("#skeleround_1,#skeleround_2,#skeleround_3,#skeleround_4,#skeleround_5,#skeleround_6,#skeleround_7,#skeleround_8").each(function(){
+				$(this).parent().hide();
+				if ($(this).prop('checked')) {
+					$(this).prop('checked', false);
+					$(this).parent().toggleClass('active');
+					$(this).blur();
+				}
+			});
 		} else {
 			$("#skeleround_1,#skeleround_2,#skeleround_3,#skeleround_4,#skeleround_5,#skeleround_6,#skeleround_7,#skeleround_8").each(function(){
+				$(this).parent().hide();
+				if ($(this).prop('checked')) {
+					$(this).prop('checked', false);
+					$(this).parent().toggleClass('active');
+					$(this).blur();
+				}
+			});
+			$("#cleanupround_1,#cleanupround_2,#cleanupround_3,#cleanupround_4,#cleanupround_5,#cleanupround_6,#cleanupround_7,#cleanupround_8").each(function(){
 				$(this).parent().hide();
 				if ($(this).prop('checked')) {
 					$(this).prop('checked', false);
@@ -191,5 +219,14 @@ $(document).ready(function(){
 		$("#report_copy").show()
 		$("#report_copy_text").focus().select();
 
+	});
+
+	$("#cleanupround_1,#cleanupround_2,#cleanupround_3,#cleanupround_4,#cleanupround_5,#cleanupround_6,#cleanupround_7,#cleanupround_8").each(function(){
+		$(this).parent().hide();
+		if ($(this).prop('checked')) {
+			$(this).prop('checked', false);
+			$(this).parent().toggleClass('active');
+			$(this).blur();
+		}
 	});
 });

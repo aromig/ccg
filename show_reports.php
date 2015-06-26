@@ -76,6 +76,7 @@
 				echo '<div class="col-xs-8 col-sm-4 col-md-3">';
 				echo ($toon[$i]['coground'] == '1') ? '+' : '';
 				echo ($toon[$i]['skeleround'] == '1') ? '*' : '';
+				echo ($toon[$i]['cleanupround'] == '1') ? '*' : '';
 				echo $toon[$i]['name'].' </div><div class="col-xs-4 col-sm-1 col-sm-offset-0 col-md-1">'.$toon[$i]['laff'].' </div><div class="col-xs-6 col-sm-4 col-md-4">'.$toon[$i]['suit'].' '.$toon[$i]['suitlevel'].'</div>';
 				echo '<div class="col-xs-6 col-sm-3 col-sm-offset-0 col-md-4">';
 				if ($toon[$i]['status'] == "Danced") {
@@ -91,6 +92,7 @@
 			<div class="col-xs-12">
 				<p>+ Together in Cog Round</p>
 				<?= ($report["battle"] == 'VP') ? '<p>* Together in Skelecog Round</p>' : '' ?>
+				<?= ($report["battle"] == 'CEO') ? '<p>* Together in Cleanup Round</p>' : '' ?>
 				<p><?= nl2br($report['notes']) ?></p>
 			</div>
 			<?php

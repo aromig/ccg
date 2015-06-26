@@ -31,6 +31,7 @@
                 $toons[$i]["status"] = $_POST['edit_status_'.$i];
                 $toons[$i]["coground"] = ($_POST['edit_coground_'.$i] == "1") ? 1 : 0;
                 $toons[$i]["skeleround"] = ($_POST['edit_skeleround_'.$i] == "1") ? 1 : 0;
+                $toons[$i]["cleanupround"] = ($_POST['edit_cleanupround_'.$i] == "1") ? 1 : 0;
                 $toon_json[$i] = json_encode($toons[$i]);
                 if ($toons[$i]["status"] == "Danced") { $danced++; }
             }
@@ -235,6 +236,9 @@
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_1" id="edit_skeleround_1" value="1">Skele Round
                             </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_1" id="edit_cleanupround_1" value="1">Cleanup Round
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -271,6 +275,9 @@
                             </label>
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_2" id="edit_skeleround_2" value="1">Skele Round
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_2" id="edit_cleanupround_2" value="1">Cleanup Round
                             </label>
                         </div>
                     </div>
@@ -309,6 +316,9 @@
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_3" id="edit_skeleround_3" value="1">Skele Round
                             </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_3" id="edit_cleanupround_3" value="1">Cleanup Round
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -345,6 +355,9 @@
                             </label>
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_4" id="edit_skeleround_4" value="1">Skele Round
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_4" id="edit_cleanupround_4" value="1">Cleanup Round
                             </label>
                         </div>
                     </div>
@@ -383,6 +396,9 @@
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_5" id="edit_skeleround_5" value="1">Skele Round
                             </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_5" id="edit_cleanupround_5" value="1">Cleanup Round
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -419,6 +435,9 @@
                             </label>
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_6" id="edit_skeleround_6" value="1">Skele Round
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_6" id="edit_cleanupround_6" value="1">Cleanup Round
                             </label>
                         </div>
                     </div>
@@ -457,6 +476,9 @@
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_7" id="edit_skeleround_7" value="1">Skele Round
                             </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_7" id="edit_cleanupround_7" value="1">Cleanup Round
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -493,6 +515,9 @@
                             </label>
                             <label class="btn btn-default">
                                 <input type="checkbox" name="edit_skeleround_8" id="edit_skeleround_8" value="1">Skele Round
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="edit_cleanupround_8" id="edit_cleanupround_8" value="1">Cleanup Round
                             </label>
                         </div>
                     </div>

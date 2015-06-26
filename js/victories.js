@@ -88,12 +88,41 @@ $(document).ready(function(){
         var battle = $(this).val();
         loadRewards(battle, '');
         populateSuits(battle);
+        populateStatuses(battle);
         if (battle == 'VP') {
             $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
                 $(this).parent().show();
             });
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
+        } else if (battle == 'CEO') {
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
+                $(this).parent().show();
+            });
+            $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
         } else {
             $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
                 $(this).parent().hide();
                 if ($(this).prop('checked')) {
                     $(this).prop('checked', false);
@@ -154,6 +183,19 @@ $(document).ready(function(){
         });
     });
 
+    var populateStatuses = function(battle) {
+        $.ajax({
+            type: "POST",
+            url: "report_status.php",
+            data: "battle="+battle,
+            success: function(html){
+                $("#edit_status_1,#edit_status_2,#edit_status_3,#edit_status_4,#edit_status_5,#edit_status_6,#edit_status_7,#edit_status_8").each(function(){
+                    $(this).html(html);
+                });
+            }
+        });
+    }
+
     var populateForm = function(json, tz) {
         var report = $.parseJSON(json);
         var battle = report.battle;
@@ -163,8 +205,36 @@ $(document).ready(function(){
             $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
                 $(this).parent().show();
             });
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
+        } else if (battle == 'CEO') {
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
+                $(this).parent().show();
+            });
+            $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
         } else {
             $("#edit_skeleround_1,#edit_skeleround_2,#edit_skeleround_3,#edit_skeleround_4,#edit_skeleround_5,#edit_skeleround_6,#edit_skeleround_7,#edit_skeleround_8").each(function(){
+                $(this).parent().hide();
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false);
+                    $(this).parent().toggleClass('active');
+                    $(this).blur();
+                }
+            });
+            $("#edit_cleanupround_1,#edit_cleanupround_2,#edit_cleanupround_3,#edit_cleanupround_4,#edit_cleanupround_5,#edit_cleanupround_6,#edit_cleanupround_7,#edit_cleanupround_8").each(function(){
                 $(this).parent().hide();
                 if ($(this).prop('checked')) {
                     $(this).prop('checked', false);
@@ -187,6 +257,7 @@ $(document).ready(function(){
         loadRewards(battle, report.reward);
         $("#edit_loaded").val(report.toons_loaded).trigger('change');
         populateSuits(battle);
+        populateStatuses(battle);
 
         var toon = new Array();
         toon[1] = $.parseJSON(report.toon_1);
@@ -212,6 +283,8 @@ $(document).ready(function(){
                     if (toon[i].coground) { $("#edit_coground_"+i).prop('checked', true).parent().toggleClass('active'); }
                     $("#edit_skeleround_"+i).prop('checked', false).parent().removeClass('active');
                     if (toon[i].skeleround) { $("#edit_skeleround_"+i).prop('checked', true).parent().toggleClass('active'); }
+                    $("#edit_cleanupround_"+i).prop('checked', false).parent().removeClass('active');
+                    if (toon[i].cleanupround) { $("#edit_cleanupround_"+i).prop('checked', true).parent().toggleClass('active'); }
                 }
             }
         }, 500);

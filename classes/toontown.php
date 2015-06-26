@@ -168,7 +168,7 @@ class ToonTown {
 		"vp"=>array("Danced", "Sad in Cog Round", "Sad in Skele Round", "Sad in Pie Round", "Disconnected", "Alt-F4'd", "Unknown"),
 		"cfo"=>array("Danced", "Sad in Cog Round", "Sad in Crane Round", "Disconnected", "Alt-F4'd", "Unknown"),
 		"cj"=>array("Danced", "Sad in Cog Round", "Sad in Evidence Round", "Disconnected", "Alt-F4'd", "Unknown"),
-		"ceo"=>array("Danced", "Sad in Waiter Round", "Sad in Cog Round", "Sad in CEO Round", "Disconnected", "Alt-F4'd", "Unknown")
+		"ceo"=>array("Danced", "Sad in Cog Round", "Sad in Waiter Round", "Sad in Cleanup Round", "Sad in CEO Round", "Disconnected", "Alt-F4'd", "Unknown")
 		);
 }
 

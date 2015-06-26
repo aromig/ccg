@@ -36,7 +36,8 @@
 					"suit"=>"",
 					"status"=>"Danced",
 					"coground"=>0,
-					"skeleround"=>0
+					"skeleround"=>0,
+					"cleanupround"=>0
 				)
 			);
 			for ($i=1;$i<=$loaded;$i++) {
@@ -47,6 +48,7 @@
 				$toons[$i]["status"] = $_POST['status_'.$i];
 				$toons[$i]["coground"] = ($_POST['coground_'.$i] == "1") ? 1 : 0;
 				$toons[$i]["skeleround"] = ($_POST['skeleround_'.$i] == "1") ? 1 : 0;
+				$toons[$i]["cleanupround"] = ($_POST['cleanupround_'.$i] == "1") ? 1 : 0;
 				$toon_json[$i] = json_encode($toons[$i]);
 				if ($toons[$i]["status"] == "Danced") { $danced++; }
 				if ($toons[$i]["status"] == "Disconnected") { $disco++; }
@@ -138,6 +140,7 @@
 					echo '<div class="col-xs-8 col-sm-6 col-md-4">';
 					echo ($toon['coground'] == '1') ? '+' : '';
 					echo ($toon['skeleround'] == '1') ? '*' : '';
+					echo ($toon['cleanupround'] == '1') ? '*' : '';
 					echo $toon['name'].' </div><div class="col-xs-4 col-sm-1 col-sm-offset-0">'.$toon['laff'].' </div><div class="col-xs-6 col-sm-5 col-md-3">'.$toon['suit'].' '.$toon['suitlevel'].'</div>';
 					echo '<div class="col-xs-6 col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-0">';
 					if ($toon['status'] == "Danced") {
@@ -151,6 +154,7 @@
 			<div class="col-xs-12">
 				<p>+ Together in Cog Round</p>
 				<?= ($battle == 'VP') ? '<p>* Together in Skelecog Round</p>' : '' ?>
+				<?= ($battle == 'CEO') ? '<p>* Together in Cleanup Round</p>' : '' ?>
 				<p><?= nl2br($report[0]['notes']) ?></p>
 			</div>
 		</div>
@@ -172,6 +176,7 @@
 					$toon = json_decode($report[0]['toon_'.$i], true);
 					echo ($toon['coground'] == '1') ? '+' : '';
 					echo ($toon['skeleround'] == '1') ? '*' : '';
+					echo ($toon['cleanupround'] == '1') ? '*' : '';
 					echo $toon['name'].' - '.$toon['laff'].' - '.$toon['suit'].' '.$toon['suitlevel'];
 					if ($toon['status'] == "Danced") {
 						if (!empty($tt->suit_milestones[intval($toon['suitlevel'])][$toon['suit']])) {
@@ -188,6 +193,7 @@
 
 + Together in Cog Round
 <?= ($battle == 'VP') ? '* Together in Skelecog Round'.PHP_EOL : '' ?>
+<?= ($battle == 'CEO') ? '* Together in Cleanup Round'.PHP_EOL : '' ?>
 <?= PHP_EOL.$report[0]['notes'] ?></textarea>
 				<a href="http://www.mmocentralforums.com/forums/newreply.php?do=newreply&noquote=1&t=<?= $run_thread ?>" id="replytothread" class="btn btn-default form-control" target="_blank">
 					<span class="glyphicon glyphicon-paste"></span> Reply to <?= $dayofweek ?> Run Thread
@@ -439,14 +445,17 @@
 								<option value="Unknown">Unknown</option>
 							</select>
 							<div class="col-xs-12 col-sm-8">Together in:
-							<div class="btn-group" data-toggle="buttons">
-								<label class="btn btn-default">
-									<input type="checkbox" name="coground_1" id="coground_1" value="1">Cog Round
-								</label>
-								<label class="btn btn-default">
-									<input type="checkbox" name="skeleround_1" id="skeleround_1" value="1">Skele Round
-								</label>
-							</div>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default">
+										<input type="checkbox" name="coground_1" id="coground_1" value="1">Cog Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="skeleround_1" id="skeleround_1" value="1">Skele Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_1" id="cleanupround_1" value="1">Cleanup Round
+									</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -484,6 +493,9 @@
 									</label>
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_2" id="skeleround_2" value="1">Skele Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_2" id="cleanupround_2" value="1">Cleanup Round
 									</label>
 								</div>
 							</div>
@@ -524,6 +536,9 @@
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_3" id="skeleround_3" value="1">Skele Round
 									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_3" id="cleanupround_3" value="1">Cleanup Round
+									</label>
 								</div>
 							</div>
 						</div>
@@ -562,6 +577,9 @@
 									</label>
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_4" id="skeleround_4" value="1">Skele Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_4" id="cleanupround_4" value="1">Cleanup Round
 									</label>
 								</div>
 							</div>
@@ -602,6 +620,9 @@
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_5" id="skeleround_5" value="1">Skele Round
 									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_5" id="cleanupround_5" value="1">Cleanup Round
+									</label>
 								</div>
 							</div>
 						</div>
@@ -640,6 +661,9 @@
 									</label>
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_6" id="skeleround_6" value="1">Skele Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_6" id="cleanupround_6" value="1">Cleanup Round
 									</label>
 								</div>
 							</div>
@@ -680,6 +704,9 @@
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_7" id="skeleround_7" value="1">Skele Round
 									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_7" id="cleanupround_7" value="1">Cleanup Round
+									</label>
 								</div>
 							</div>
 						</div>
@@ -718,6 +745,9 @@
 									</label>
 									<label class="btn btn-default">
 										<input type="checkbox" name="skeleround_8" id="skeleround_8" value="1">Skele Round
+									</label>
+									<label class="btn btn-default">
+										<input type="checkbox" name="cleanupround_8" id="cleanupround_8" value="1">Cleanup Round
 									</label>
 								</div>
 							</div>
