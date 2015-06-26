@@ -319,7 +319,7 @@ label { text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0
 
 @media only screen and (max-width: 767px) {
     #topnavbar, #content { border-radius: 0px; }
-    #login_form, #delete_toon { width: 100%; border-radius: 0; }
-    #login_form h3, #delete_toon h3 { border-radius: 0; }
+    #login_form, #delete_toon, #delete_report { width: 100%; border-radius: 0; }
+    #login_form h3, #delete_toon h3, #delete_report { border-radius: 0; }
     #profile_register, h3, h4, h5 { text-align: center; }
 }
