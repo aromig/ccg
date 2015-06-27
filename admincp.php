@@ -139,16 +139,16 @@
                                     View &amp; Edit Toon Information such as Name, Laff, Gags &amp; Cog Suits.
                                 </li>
                                 <li>
-                                    <span class="glyphicon glyphicon-list-alt"></span> <strong>Reports</strong><br />
-                                    To edit and/or delete run reports, you can do so from the <a href="victories.php">Victories</a> page by clicking the icons in the corner of the report.
-                                </li>
-                                <li>
                                     <span class="glyphicon glyphicon-calendar"></span> <strong>Schedule</strong><br />
                                     Update the daily Run Schedules as well as the respective Run Thread numbers.
                                 </li>
                                 <li>
                                     <span class="glyphicon glyphicon-cog"></span> <strong>Other</strong><br />
                                     Update other settings such as Run Districts &amp; Beanfest Information.
+                                </li>
+                                <li>
+                                    <span class="glyphicon glyphicon-list-alt"></span> <strong>Reports</strong><br />
+                                    Edit Run Reports from the <a href="victories.php">Victories</a> page.
                                 </li>
                             </ul>
                         </div>
