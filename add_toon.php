@@ -14,7 +14,7 @@
 	} else {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Form was submitted
 			// Validate Name & Laff
-			if (!preg_match('/^[a-zA-Z][a-zA-Z\. ]+$/', $_POST['toon_name'])) {
+			if (!preg_match("/^[a-zA-Z][a-zA-Z\.' ]+$/", $_POST['toon_name'])) {
 				$error[] = 'Name is not valid.';
 			}
 			if (!preg_match('/^\d+$/', $_POST['toon_laff'])) {
