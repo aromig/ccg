@@ -60,7 +60,7 @@ class CCG {
 			$groups = explode(",", $usr['membergroupids']);
 			foreach ($groups as $group) {
 				switch ($group) {
-					case '32':	$valid_user = true; $role = "CCG Member"; break; // CCG
+					case '32':	$valid_user = true; if ($role != "CCG Ambassador") { $role = "CCG Member"; } break; // CCG
 					case '41':	$valid_user = true; $role = "CCG Ambassador"; break; // CCG Ambassador
 					case '11':	$valid_user = true; $role = "MCF Mini-Mod"; break; // Mini-Mod
 					case '7' :	$valid_user = true; $role = "MCF Moderator"; break; // Moderator
