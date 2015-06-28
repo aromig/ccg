@@ -65,8 +65,8 @@
 					array("ORDER"=>"ccg_toons.toon ASC")
 				);
 
-				$filter_in = array(" ", ".");
-				$filter_out = array("_", "");
+				$filter_in = array(" ", ".", "&");
+				$filter_out = array("_", "", "and");
 
 				if (!empty($memberlist)) {
 					foreach ($memberlist as $member) {

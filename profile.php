@@ -78,8 +78,8 @@
 			<div class="profile_suits">
 				<h4>Cog Suits</h4>
 			<?php
-			$filter_in = array(" ", ".");
-			$filter_out = array("_", "");
+			$filter_in = array(" ", ".", "&");
+			$filter_out = array("_", "", "and");
 				echo '<img src="cogs/cogs_'.strtolower(str_replace($filter_in, $filter_out, $toon['sellsuit'])).'.png" title="'.$toon['sellsuit'].'" class="img-circle" />';
 				echo '<img src="cogs/cogs_'.strtolower(str_replace($filter_in, $filter_out, $toon['cashsuit'])).'.png" title="'.$toon['cashsuit'].'" class="img-circle" />';
 				echo '<img src="cogs/cogs_'.strtolower(str_replace($filter_in, $filter_out, $toon['lawsuit'])).'.png" title="'.$toon['lawsuit'].'" class="img-circle" />';
