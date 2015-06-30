@@ -244,6 +244,7 @@ $(document).ready(function(){
             });
         }
 
+        $("#edit_timezone").val(tz);
         var run_datetime = report.run_datetime;
         var datetime = run_datetime.split(' ');
         var date = datetime[0].split('-');
