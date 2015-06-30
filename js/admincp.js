@@ -104,7 +104,6 @@ $(document).ready(function(){
             url: "cp_toon.php",
             data: "toonid="+toonid,
             success: function(json){
-                console.log(json);
                 var toon = $.parseJSON(json);
                 $("#toon_id").val(toon.toon_id);
                 $("#toon").val(toon.toon);
