@@ -84,6 +84,12 @@ $(document).ready(function(){
             $("#search_toon_btn").trigger("click");
         }
     });
+    $("#search_userstoon").keypress(function(event){
+        if (event.which == 13) {
+            event.preventDefault();
+            $("#search_userstoon_btn").trigger("click");
+        }
+    });
     $("#search_toon_btn").click(function(){
         var query = $("#search_toon").val();
         var type = "toon";
@@ -91,6 +97,18 @@ $(document).ready(function(){
             type: "POST",
             url: "cp_search.php",
             data: "type="+type+"&query="+query,
+            success: function(html){
+                $("#toon_results").html(html);
+            }
+        });
+    });
+    $("#search_userstoon_btn").click(function(){
+        var query = $("#search_userstoon").val();
+        var type= "toon";
+        $.ajax({
+            type: "POST",
+            url: "cp_search.php",
+            data: "type="+type+"&query="+query+"&user=1",
             success: function(html){
                 $("#toon_results").html(html);
             }
