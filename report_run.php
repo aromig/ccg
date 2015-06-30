@@ -226,6 +226,7 @@
 				<li>Enter any notes or thoughts about the battle.</li>
 				<li>Submit your report and you will be given the opportunity to copy it to the appropriate Run Report thread on the forum.</li>
 			</ol>
+			<p><strong>Please Remember!</strong> All <a href="http://www.disneysonlineworlds.com/index.php/Policies_and_Disclaimers" target="_blank">MMOCentralForums' Site Rules</a> apply when submitting your run report.</p>
 		<form role="form" method="post" action="" autocomplete="on" id="report_run" class="form-horizontal">
 			<input type="hidden" name="run_report" id="run_report" value="vp_" />
 			<div class="col-xs-12">
