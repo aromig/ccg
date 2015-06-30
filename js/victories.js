@@ -244,16 +244,20 @@ $(document).ready(function(){
             });
         }
 
-        var datetime = new Date(report.run_datetime);
-        $("#edit_date").val((datetime.getMonth()+1)+'/'+datetime.getDate()+'/'+datetime.getFullYear());
-        $("#edit_timezone").val(tz);
-        var hour = (datetime.getHours() <= 12) ? datetime.getHours() : datetime.getHours()-12;
-        var hour = (hour < 12) ? '0'+hour : hour;
-        var minute = (datetime.getMinutes() < 10) ? '0'+datetime.getMinutes() : datetime.getMinutes();
-        var ampm = (datetime.getHours() < 12) ? ' AM' : ' PM';
-        var time = hour+':'+minute+ampm;
+        var run_datetime = report.run_datetime;
+        var datetime = run_datetime.split(' ');
+        var date = datetime[0].split('-');
+        var year = date[0]; var month = date[1]; var day = date[2];
+        $("#edit_date").datepicker("setDate", new Date(year, month-1, day));
 
-        getEditRunTimes("edit_time", time);
+        var time = datetime[1].split(':');
+        var hour = (time[0] <= 12) ? time[0] : time[0]-12;
+        var hour = (hour < 10) ? '0'+hour : hour;
+        var minute = time[1];
+        var ampm = (time[0] < 12) ? 'AM' : 'PM';
+        var full_time = hour+':'+minute+' '+ampm;
+        getEditRunTimes("edit_time", full_time);
+
         loadRewards(battle, report.reward);
         $("#edit_loaded").val(report.toons_loaded).trigger('change');
         populateSuits(battle);
