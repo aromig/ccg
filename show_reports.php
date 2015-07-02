@@ -18,6 +18,8 @@
 	}
 
 	if (!empty($reports)) {
+		echo '<h5>'.count($reports).' Reports Found</h5>';
+
 		foreach ($reports as $report) {
 			$disco = 0;
 
