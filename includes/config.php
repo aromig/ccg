@@ -26,6 +26,7 @@ unset($_SESSION['registered']);
 
 if ($ccg->is_ccg_user($current_user)) {
 	$_SESSION['user'] = $current_user['username'];
+	$_SESSION['userid'] = $current_user['userid'];
 
 	$results = $db->select("ccg_users", "mcf_username", array("mcf_username"=>$_SESSION['user']));
 	if (!empty($results)) {

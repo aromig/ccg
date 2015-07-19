@@ -23,13 +23,20 @@
         }
     }
 
+    if (!$_SESSION['registered']) {
+        $results = $db->select("ccg_users", "mcf_userid", array("mcf_userid"=>$_SESSION['userid']));
+        if (!empty($results)) {
+            $needs_renamed = true;
+        }
+    }
+
 
     if (!$joined) {
 ?>
 
 <!-- Content goes here -->
 <div class="row">
-    <?php if ($_SESSION['registered'] == false) { ?>
+<?php if (!$_SESSION['registered'] && !$needs_renamed) { ?>
     <div class="col-xs-12"><h3>Register Your Account</h3></div>
     <div class="col-xs-12"><p>Please confirm your account name below to register your MMOCentralForums.com account with the Cold Callers Guild site.</p></div>
     <div class="col-xs-12">
@@ -61,10 +68,21 @@
             <?php } ?>
         </form>
     </div>
+    <?php } else if (!$_SESSION['registered'] && $needs_renamed) {
+    ?>
+
+    <div class="col-xs-12"><h3>You're Already Registered... Sort of</h3></div>
+    <div class="col-xs-12">
+        <p>Your MMOCentralForums account is already registered on this site but it looks like your forum account was renamed!</p>
+        <p>Please contact a CCG Ambassador so your account on this site can be renamed to match and then you can access your profile.</p>
+    </div>
+
     <?php } else { ?>
 
     <div class="col-xs-12"><h3>You're Already Registered</h3></div>
-    <div class="col-xs-12"><p>Your MMOCentralForums account is already registered on this site.</p></div>
+    <div class="col-xs-12">
+        <p>Your MMOCentralForums account is already registered on this site.</p>
+    </div>
 
     <?php }
 
