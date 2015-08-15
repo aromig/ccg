@@ -125,8 +125,52 @@
                     if (isset($success)) {
                         echo'<h4>'.$success.'</h4>';
                     } else {
-                        ?>
+                        $user_count = $db->count("ccg_users");
+                        $toon_count = $db->count("ccg_toons");
+                        $prev_month = date('Y-m-01', strtotime(date('Y-m').' -1 month'));
+                        $prev_month_lastday = date('Y-m-t', strtotime($prev_month));
+                        $this_month = date('Y-m-01');
+                        $this_month_lastday = date('Y-m-t', strtotime($this_month));
+                        $prev_report_count = $db->count("ccg_ttr_results",array(
+                            "run_datetime[<>]"=>array($prev_month.' 00:00:00',
+                                                  $prev_month_lastday.' 23:59:59')));
+                        $this_report_count = $db->count("ccg_ttr_results",array(
+                            "run_datetime[<>]"=>array($this_month.' 00:00:00',
+                                                  $this_month_lastday.' 23:59:59')));
+                ?>
                         <h4>Welcome to the CCG AdminCP!</h4>
+                        <div class="col-xs-6 col-md-3 centered">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h4>Users Registered</h4></div>
+                                <div class="panel-body">
+                                    <h2><?= $user_count ?></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 centered">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h4>Toons Registered</h4></div>
+                                <div class="panel-body">
+                                    <h2><?= $toon_count ?></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 centered">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h4>Reports<br />(<?= date('M Y', strtotime(date('Y-m').' -1 month')) ?>)</h4></div>
+                                <div class="panel-body">
+                                    <h2><?= $prev_report_count ?></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 centered">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h4>Reports<br />(<?= date('M Y') ?>)</h4></div>
+                                <div class="panel-body">
+                                    <h2><?= $this_report_count ?></h2>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-12">
                             <p>You can use this control panel to manage various aspects of the site and your users.</p>
                             <ul>
