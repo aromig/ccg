@@ -5,6 +5,18 @@ class CCG {
 		return date('I') ? "+7 hours" : "+8 hours";
 	}
 
+	public function is_BST() {
+		$today = strtotime("today");
+		$year = date('y');
+		$BSTstart = strtotime($year."-03-31 last Sunday");
+		$BSTend = strtotime($year."-10-31 last Sunday");
+		if ($today < $BSTstart || $today > $BSTend) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	public $ccg_roles = array(
 		"0"  => "Unregistered",
 		"32" => "CCG Member",

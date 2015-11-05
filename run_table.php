@@ -31,7 +31,9 @@
 			$html .= '<td>'.date("h:i A", strtotime("+2 hours", $run_time)).'</td>'; // Central Time
 			$html .= '<td>'.date("h:i A", strtotime("+3 hours", $run_time)).'</td>'; // Eastern Time
 			$html .= '<td>'.date("h:i A", strtotime($ccg->GMT_hours(), $run_time)).'</td>'; // GMT
-			$html .= '<td>'.date("h:i A", strtotime("+8 hours", $run_time)).'</td>'; // British Summer Time
+			if ($ccg->is_BST()) {
+				$html .= '<td>'.date("h:i A", strtotime("+8 hours", $run_time)).'</td>'; // British Summer Time
+			}
 			$html .= '</tr>';
 		}
 		$html .= '<tr><td colspan="7"></td></tr>';

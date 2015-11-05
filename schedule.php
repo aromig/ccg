@@ -37,7 +37,9 @@
 						<th>Central</th>
 						<th>Eastern</th>
 						<th>GMT</th>
+						<?php if ($ccg->is_BST()) { ?>
 						<th>BST</th>
+						<?php } ?>
 					</tr>
 				</thead>
 				<tbody id="schedule_info">
@@ -71,7 +73,9 @@
 						<th>Central</th>
 						<th>Eastern</th>
 						<th>GMT</th>
+						<?php if ($ccg->is_BST()) { ?>
 						<th>BST</th>
+						<?php } ?>
 					</tr>
 				</thead>
 				<tbody>
@@ -90,8 +94,10 @@
 							echo '<td>'.date("h:i A", strtotime("+3 hours", $fest_time)).'</td>';
 							// Greenwich Mean Time
 							echo '<td>'.date("h:i A", strtotime($ccg->GMT_hours(), $fest_time)).'</td>';
-							// British Summer Time Time
-							echo '<td>'.date("h:i A", strtotime("+8 hours", $fest_time)).'</td>';
+							if ($ccg->is_BST()) {
+								// British Summer Time Time
+								echo '<td>'.date("h:i A", strtotime("+8 hours", $fest_time)).'</td>';
+							}
 							echo '</tr>';
 						}
 					?>
