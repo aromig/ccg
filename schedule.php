@@ -89,7 +89,7 @@
 							// Eastern Time
 							echo '<td>'.date("h:i A", strtotime("+3 hours", $fest_time)).'</td>';
 							// Greenwich Mean Time
-							echo '<td>'.date("h:i A", strtotime("+7 hours", $fest_time)).'</td>';
+							echo '<td>'.date("h:i A", strtotime($ccg->GMT_hours(), $fest_time)).'</td>';
 							// British Summer Time Time
 							echo '<td>'.date("h:i A", strtotime("+8 hours", $fest_time)).'</td>';
 							echo '</tr>';

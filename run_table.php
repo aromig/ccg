@@ -30,7 +30,7 @@
 			$html .= '<td>'.date("h:i A", strtotime("+1 hour", $run_time)).'</td>';  // Mountain Time
 			$html .= '<td>'.date("h:i A", strtotime("+2 hours", $run_time)).'</td>'; // Central Time
 			$html .= '<td>'.date("h:i A", strtotime("+3 hours", $run_time)).'</td>'; // Eastern Time
-			$html .= '<td>'.date("h:i A", strtotime("+7 hours", $run_time)).'</td>'; // Greenwich Mean Time
+			$html .= '<td>'.date("h:i A", strtotime($ccg->GMT_hours(), $run_time)).'</td>'; // GMT
 			$html .= '<td>'.date("h:i A", strtotime("+8 hours", $run_time)).'</td>'; // British Summer Time
 			$html .= '</tr>';
 		}

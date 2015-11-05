@@ -42,7 +42,7 @@
 							break;
 						case "GMT":
 							$html .= '<option value="'.date("h:i A", $run_time).'">';
-							$html .= date("h:i A", strtotime("+7 hours", $run_time)).'</option>';
+							$html .= date("h:i A", strtotime($ccg->GMT_hours(), $run_time)).'</option>';
 							break;
 						case "BST":
 							$html .= '<option value="'.date("h:i A", $run_time).'">';
@@ -69,7 +69,7 @@
 						break;
 					case "GMT":
 						$html .= '<option value="'.date("h:i A", $run_time).'">';
-						$html .= date("h:i A", strtotime("+7 hours", $run_time)).'</option>';
+						$html .= date("h:i A", strtotime($ccg->GMT_hours(), $run_time)).'</option>';
 						break;
 					case "BST":
 						$html .= '<option value="'.date("h:i A", $run_time).'">';

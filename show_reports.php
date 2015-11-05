@@ -51,8 +51,8 @@
 					$user_tm = date("h:i A", strtotime("+3 hours", $run_tstamp));
 					break;
 				case "GMT":
-					$user_dt = date("jS F Y", strtotime("+7 hours", $run_tstamp));
-					$user_tm = date("h:i A", strtotime("+7 hours", $run_tstamp));
+					$user_dt = date("jS F Y", strtotime($ccg->GMT_hours(), $run_tstamp));
+					$user_tm = date("h:i A", strtotime($ccg->GMT_hours(), $run_tstamp));
 					break;
 				case "BST":
 					$user_dt = date("jS F Y", strtotime("+8 hours", $run_tstamp));

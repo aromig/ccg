@@ -1,6 +1,9 @@
 <?php
 
 class CCG {
+	public function GMT_Hours() {
+		return date('I') ? "+7 hours" : "+8 hours";
+	}
 
 	public $ccg_roles = array(
 		"0"  => "Unregistered",
