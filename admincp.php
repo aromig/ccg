@@ -16,6 +16,7 @@
                 // Save Users
                 $user = array();
                 $user['mcf_username'] = $_POST['username'];
+                $user['bassie'] = isset($_POST['bassie']) ? 1 : 0;
                 $user['admin'] = isset($_POST['admin']) ? 1 : 0;
 
                 $stmt = $db->update("ccg_users",
@@ -255,9 +256,8 @@
                                 <input type="text" class="form-control" id="last_ip" name="last_ip" readonly>
                             </div>
                         </div>
-                        <div class="form-group col-xs-6 col-sm-6" title="This value cannot be changed here. Ambassador status is dependent on the user's group membership on MMOCentralForums.">
-                            <label for="bassie" class="col-xs-12 control-label"><input type="checkbox" id="bassie" name="bassie" value="1" disabled> Ambassador?</label>
-                            <input type="hidden" id="bassie_val" name="bassie_val" value="">
+                        <div class="form-group col-xs-6 col-sm-6" title="Ambassador status is dependent on the user's group membership on MMOCentralForums. You may uncheck and Save if the user is no longer an ambassador and needs removed manually.">
+                            <label for="bassie" class="col-xs-12 control-label"><input type="checkbox" id="bassie" name="bassie" value="1"> Ambassador?</label>
                         </div>
                         <div class="form-group col-xs-6 col-sm-6">
                             <label for="admin" class="col-xs-12 control-label"><input type="checkbox" id="admin" name="admin" value="1"> Admin?</label>

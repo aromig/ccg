@@ -37,7 +37,6 @@ $(document).ready(function(){
                 $("#reg_ip").val(user.reg_ip);
                 $("#last_login").val(user.last_login);
                 $("#last_ip").val(user.last_ip);
-                $("#bassie_val").val(user.bassie);
                 if (parseInt(user.bassie) === 1) { $("#bassie").prop('checked', true); } else { $("#bassie").prop('checked', false); }
                 if (parseInt(user.admin) === 1) { $("#admin").prop('checked', true); } else { $("#admin").prop('checked', false); }
                 $("#user_details").show();
