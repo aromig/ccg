@@ -2,19 +2,21 @@
 
 class CCG {
 	public function GMT_Hours() {
-		return date('I') ? "+7 hours" : "+8 hours";
+		$theTime = time();
+		$tz = new DateTimeZone('America/New_York');
+		$transition = $tz->getTransitions($theTime, $theTime);
+		$abbr = $transition[0]['abbr']; // $abbr will either be EST or EDT
+
+		return $abbr[1] == 'D' ? "+7 hours" : "+8 hours";
 	}
 
 	public function is_BST() {
-		$today = strtotime("today");
-		$year = date('y');
-		$BSTstart = strtotime($year."-03-31 last Sunday");
-		$BSTend = strtotime($year."-10-31 last Sunday");
-		if ($today < $BSTstart || $today > $BSTend) {
-			return false;
-		} else {
-			return true;
-		}
+		$theTime = time();
+		$tz = new DateTimeZone('Europe/London');
+		$transition = $tz->getTransitions($theTime, $theTime);
+		$abbr = $transition[0]['abbr'];
+
+		return $abbr == 'BST' ? true : false;
 	}
 
 	public $ccg_roles = array(
