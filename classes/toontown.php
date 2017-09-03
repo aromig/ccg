@@ -3,22 +3,17 @@
 class ToonTown {
 
 	public $districts = array(
-		"Acrylic Acres",
-		"Baroque Bluffs",
-		"Bliss Bayou",
-		"Brush Bay",
-		"Colorful Canvas",
-		"Easel Acres",
-		"Eraser Oasis",
-		"Graphite Gulch",
-		"Paintbrush Field",
-		"Pastel Plains",
-		"Pianissimo Plains",
-		"Pigment Point",
-		"Renaissance River",
-		"Stencil Steppe",
-		"Vibrant Valley",
-		"Watercolor Woods",
+		"Blam Canyon",
+		"Boingbury",
+		"Bounceboro",
+		"Fizzlefield",
+		"Gulp Gulch",
+		"Hiccup Hills",
+		"Splashport",
+		"Splat Summit",
+		"Thwackville",
+		"Whoosh Rapids",
+		"Zoink Falls",
 		"Welcome Valley"
 		);
 
@@ -91,62 +86,12 @@ class ToonTown {
 		49=>array("Mr. Hollywood"=>"Maxed Suit & Laff Boost!", "Robber Baron"=>"Maxed Suit & Laff Boost!", "Big Wig"=>"Maxed Suit & Laff Boost!", "The Big Cheese"=>"Maxed Suit & Laff Boost!")
 		);
 
-	//  -- Set in ccg_ttr_vars now
-	/*public $districts = array(
-		"primary"=>"Pastel Plains",
-		"backup"=>array("Eraser Oasis", "Brush Bay")
-		); */
-
 	public $prior_run_length = array(
 		"VP"=>"+1 hour",
 		"CFO"=>"+45 minutes",
 		"CJ"=>"+45 minutes",
 		"CEO"=>"+45 minutes"
 		);
-
-	// Run Schedule in Pacific Time -- Set in ccg_ttr_schedule now
-	/*public $run_schedule = array(
-		"Monday"=>array(
-			"battle"=>array("CEO","VP","CFO","CJ"),
-			"start_time"=>array("5:00 AM", "12:00 PM", "6:00 PM"),
-			"thread"=>"362383"
-			),
-		"Tuesday"=>array(
-			"battle"=>array("VP", "CFO", "CJ", "CEO"),
-			"start_time"=>array("5:00 AM", "9:00 AM", "3:00 PM", "7:00 PM"),
-			"thread"=>"362384"
-			),
-		"Wednesday"=>array(
-			"battle"=>array("CEO","VP","CFO","CJ"),
-			"start_time"=>array("5:00 AM", "11:00 AM", "3:00 PM", "6:15 PM"),
-			"thread"=>"362344"
-			),
-		"Thursday"=>array(
-			"battle"=>array("CJ", "CEO", "VP", "CFO"),
-			"start_time"=>array("5:00 AM", "11:00 AM", "4:00 PM", "7:30 PM"),
-			"thread"=>"368797"
-			),
-		"Friday"=>array(
-			"battle"=>array("CFO", "CJ", "CEO", "VP"),
-			"start_time"=>array("5:00 AM", "11:00 AM", "4:00 PM", "7:30 PM"),
-			"thread"=>"368800"
-			),
-		"Saturday"=>array(
-			"battle"=>array("CJ", "CEO", "VP", "CFO"),
-			"start_time"=>array("5:00 AM", "9:00 AM", "12:15 PM", "4:00 PM", "7:30 PM"),
-			"thread"=>"362345"
-			),
-		"Sunday"=>array(
-			"battle"=>array("VP", "CFO", "CJ", "CEO"),
-			"start_time"=>array("5:00 AM", "12:00 PM", "4:00 PM", "7:15 PM"),
-			"thread"=>"368923"
-			),
-		);*/
-
-	//  -- Set in ccg_ttr_vars now
-	/*public $beanfest_days = array(
-		"Saturdays"=>array("8:15 AM")
-		);*/
 
 	public $vp_sos_card = array(
 		"", "Baker Bridget", "Barbara Seville", "Barnacle Bessie", "Clerk Clara", "Clerk Penny", "Clerk Ray", "Clerk Will", "Clumsy Ned", "Daffy Don", "Doctor Drift", "Flim Flam", "Flippy", "Franz Neckvein", "Julius Wheezer", "Lil Oldman", "Madame Chuckle", "Melody Wavers", "Moe Zart", "Mr. Freeze", "Nancy Gas", "Professor Guffaw", "Professor Pete", "Shelly Seaweed", "Sid Sonata", "Sofie Squirt", "Soggy Bottom", "Soggy Nell", "Sticky Lou", "Stinky Ned", "Unknown"
