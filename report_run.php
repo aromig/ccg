@@ -251,7 +251,7 @@
 						<div class="form-group form-group-sm">
 							<label for="vp_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
-								<input type="text" name="vp_date" id="vp_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
+								<input type="text" name="vp_date" id="vp_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" readonly>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
@@ -289,7 +289,7 @@
 						<div class="form-group form-group-sm">
 							<label for="cfo_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
-								<input type="text" name="cfo_date" id="cfo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
+								<input type="text" name="cfo_date" id="cfo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" readonly>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
@@ -327,7 +327,7 @@
 						<div class="form-group form-group-sm">
 							<label for="cj_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
-								<input type="text" name="cj_date" id="cj_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
+								<input type="text" name="cj_date" id="cj_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" readonly>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
@@ -365,7 +365,7 @@
 						<div class="form-group form-group-sm">
 							<label for="ceo_date" title="VP Run Date" class="control-label col-xs-12 col-sm-3">Date:</label>
 							<div class="col-xs-12 col-sm-3">
-								<input type="text" name="ceo_date" id="ceo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" value="<?= date('m/d/Y') ?>" readonly>
+								<input type="text" name="ceo_date" id="ceo_date" class="run_date form-control datepicker" style="cursor: pointer;" placeholder="Date" tabindex="1" readonly>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">

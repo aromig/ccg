@@ -137,6 +137,12 @@ $(document).ready(function(){
 		return document.referrer.indexOf(document.location.href) > -1;
 	}
 
+	var  today = GetMonth() + "/" + getDate() + "/" + getFullYear();
+	$("#vp_date").val(today);
+	$("cfo_date").val(today);
+	$("cj_date").val(today);
+	$("ceo_date").val(today);
+
 	getRunTimes("vp_time");
 	getRunTimes("cfo_time");
 	getRunTimes("cj_time");
