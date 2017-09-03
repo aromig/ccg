@@ -137,11 +137,12 @@ $(document).ready(function(){
 		return document.referrer.indexOf(document.location.href) > -1;
 	}
 
-	var  today = GetMonth() + "/" + getDate() + "/" + getFullYear();
+	var d = new Date();
+	var today = ("0" + d.getMonth()).slice(-2) + "/" + ("0" + d.getDate()).slice(-2) + "/" + d.getFullYear();
 	$("#vp_date").val(today);
-	$("cfo_date").val(today);
-	$("cj_date").val(today);
-	$("ceo_date").val(today);
+	$("#cfo_date").val(today);
+	$("#cj_date").val(today);
+	$("#ceo_date").val(today);
 
 	getRunTimes("vp_time");
 	getRunTimes("cfo_time");
