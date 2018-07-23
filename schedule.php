@@ -8,7 +8,7 @@
 	<div class="col-xs-12"><h3>TTR Run Schedule</h3></div>
 	<div class="col-xs-12">
 		<h4>District for all runs: <strong><?= $ccg->get_ttr_var('primary_district') ?></strong></h4>
-		<h5><a title="When to use the Backup District" href="http://www.mmocentralforums.com/forums/showthread.php?t=364633">Backup District</a>: <strong>
+		<h5><a title="When to use the Backup District" href="http://www.mmocentralforums.com/forums/showthread.php?t=376511">Backup District</a>: <strong>
 			<?php
 				$backups = json_decode($ccg->get_ttr_var('backup_districts'), true);
 				echo $backups[0];
