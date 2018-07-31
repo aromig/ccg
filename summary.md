@@ -1,6 +1,6 @@
-#### June 29th, 2015
-
 # Cold Callers Guild
+
+Release: June 29th, 2015
 
 Web Site URL: [mmocentralforums.com/ccg](http://mmocentralforums.com/ccg)
 
