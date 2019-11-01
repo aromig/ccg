@@ -25,7 +25,7 @@
 			<li>The preferred VP strategy of the CCG is <em>"Lure Left / Kill Right"</em>.</li>
 			<li>The CCG does not approve of the use of any unfriendly chat &mdash; Whether it be stinky speedchat phrases used in an unfriendly way or hurtful use of SpeedChat+.</li>
 			<li>Choose gags that will not endanger other toons &mdash; The boss cog fight is <strong>not</strong> the place to <em>"work"</em> your gags.</li>
-			<li>Don't board the elevators before the official run time &mdash; We prefer everyone stay in the pit/outside though some cannot due to lag.</li>
+			<li>Don't board the elevators before the official run time &mdash; Everyone should stay in the pit/outside until the clock in the shticker book (shown in PT) reflects the right time. </li>
 			<li>No multi-tooning except in the last elevator to make a run happen and when no toons are left behind. Please keep your extra toon out of the lobby during regular boarding, and then get approval from teammates to bring them.</li>
 			<li>Glitches are not acceptable on CCG runs.</li>
 			<li>Work as a team. Everyone wants to win.</li>
