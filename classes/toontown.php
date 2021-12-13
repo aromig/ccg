@@ -98,7 +98,7 @@ class ToonTown {
 		);
 
 	public $cfo_unite_phrase = array(
-		"", "Toon-Up! 10 Laff", "Toon-Up! 20 Laff", "Toon-Up! 40 Laff", "Toon-Up! 80 Laff", "Toon-Up! Max Laff", "Gag-up! Heal", "Gag-up! Trap", "Gag-up! Lure", "Gag-up! Sound", "Gag-up! Throw", "Gag-up! Squirt", "Gag-up! Drop", "Gag-up! All", "100 Jellybeans", "200 Jellybeans", "350 Jellybeans", "600 Jellybeans", "Unknown"
+		"", "Toon-Up! 20 Laff", "Toon-Up! 35 Laff", "Toon-Up! 50 Laff", "Toon-Up! 65 Laff", "Toon-Up! 80 Laff", "Gag-up! Heal", "Gag-up! Trap", "Gag-up! Lure", "Gag-up! Sound", "Gag-up! Throw", "Gag-up! Squirt", "Gag-up! Drop", "Gag-up! All", "100 Jellybeans", "200 Jellybeans", "350 Jellybeans", "600 Jellybeans", "Unknown"
 		);
 
 	public $cj_summons = array(
@@ -106,7 +106,7 @@ class ToonTown {
 		);
 
 	public $ceo_pink_slip = array(
-		"", "1 Pink Slip", "2 Pink Slips", "3 Pink Slips", "4 Pink Slips", "5 Pink Slips"
+		"", "2 Pink Slips", "3 Pink Slips", "4 Pink Slips", "5 Pink Slips", "6 Pink Slips"
 		);
 
 	public $battle_status = array(
