@@ -7,6 +7,12 @@
 <div class="row">
 	<div class="col-xs-12"><h3>Guidelines</h3></div>
 	<div class="col-xs-12 col-sm-8 col-md-9">
+		<h4>Welcome</h4>
+		<p>Hello and thank you for checking out the Cold Callers Guild. We are a group of players that think every toon deserves a run, no matter your suit level or experience. We're also a fun community that does tons of stuff together besides just boss runs.</p>
+
+		<h4>Where to meet the community</h4>
+		<p>Our community organizes in two places. At MMO Central Forums, a website for passionate gamers. The Cold Callers Guild has its own <a href="https://www.mmocentralforums.com/forums/forumdisplay.php?f=168" target="_blank">subforum</a> where you can check out all our upcoming events and even propose your own! MMO Central Forums also has a Discord server you are <a href="<?php echo $ccg->get_ttr_var('discord_invite'); ?>" target="_blank">welcome to join</a>.</p>
+
 		<h4>Our One Rule</h4>
 		<ul>
 			<li>No Elevator Shuffling &mdash; Once you load onto the elevator, stay on the elevator.</li>
@@ -34,6 +40,26 @@
 
 		<h4>Who can attend a CCG run?</h4>
 		<p>Everyone may join us at our runs as long as they follow our rule and guidelines.</p>
+
+		<h4>Upcoming Events</h4>
+		<div class="col-xs-12">
+			<?php
+			$event_thread = $ccg->get_ttr_var('event_thread');
+			$curl = curl_init();
+			//set it to point at the event list
+			curl_setopt($curl, CURLOPT_URL, "https://www.mmocentralforums.com/forums/showpost.php?p={$event_thread}");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$output = curl_exec($curl);
+			curl_close($curl);
+			preg_match("|<font size=\"5\"><b>Event List</b></font><br />(.*)<font size=\"5\"><b>End Event List</b></font>|s", $output, $match);
+			$event_list = $match[0];
+			$search = "<font size=\"5\"><b>Event List</b></font><br />";
+			$event_list = str_replace($search, "", $event_list);
+			$search = "<font size=\"5\"><b>End Event List</b></font>";
+			$event_list = str_replace($search, "", $event_list);
+			echo $event_list;
+			?>
+		</div>
 	</div>
 	<div class="col-xs-12 col-sm-4 col-md-3">
 		<h4>Strategy Guides</h4>

@@ -3,7 +3,7 @@ $(document).ready(function(){
 		//var day = $("#schedule_day option:selected").val();
 		$.ajax({
 			type: "POST",
-			url: "run_table.php",
+			url: "run_schedule.php",
 			data: "day="+day,
 			success: function(html){
 				$("#schedule_info").html(html);
