@@ -657,6 +657,9 @@
                         <div class="col-sm-6">
                             <input id="event_thread" name="event_thread" class="form-control" type="text" value="<?php echo $event_thread; ?>" />
                         </div>
+                        <div class="col-sm-6">
+                            <a href="https://www.mmocentralforums.com/forums/showpost.php?p=<?= $event_thread ?>" target="_blank"><span class="glyphicon glyphicon-link"></span> Go to thread</a>
+                        </div>
                     </div>
 
                     <div class="form-group col-xs-6">

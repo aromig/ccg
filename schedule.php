@@ -106,6 +106,35 @@
 		</div>
 		<img src="images/purple.gif" /> <img src="images/fuchsia.gif" /> <img src="images/orange.gif" /> <img src="images/red.gif" /> <img src="images/green.gif" /> <img src="images/blue.gif" /> <img src="images/pink.gif" /> <img src="images/blue_green.gif" /> <img src="images/yellow.gif" />
 	</div>
+
+<?php
+	$event_thread = $ccg->get_ttr_var('event_thread');
+?>
+
+	<div class="col-xs-12"><h3>Upcoming Events</h3></div>
+	<div class="col-xs-12">
+		<?php
+			$event_thread = $ccg->get_ttr_var('event_thread');
+			$curl = curl_init();
+			//set it to point at the event list
+			curl_setopt($curl, CURLOPT_URL, "https://www.mmocentralforums.com/forums/showpost.php?p={$event_thread}");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$output = curl_exec($curl);
+			curl_close($curl);
+			preg_match("|<font size=\"5\"><b>Event List</b></font><br />(.*)<font size=\"5\"><b>End Event List</b></font>|s", $output, $match);
+			$event_list = $match[0];
+			$search = "<font size=\"5\"><b>Event List</b></font><br />";
+			$event_list = str_replace($search, "", $event_list);
+			$search = "<font size=\"5\"><b>End Event List</b></font>";
+			$event_list = str_replace($search, "", $event_list);
+			$event_list = trim($event_list);
+			if (str_replace('<br />', '', $event_list) != "") {
+				echo $event_list;
+			} else {
+				echo "<p>No events found. Please check back later!</p>";
+			}
+		?>
+	</div>
 </div>
 
 <!-- footer -->

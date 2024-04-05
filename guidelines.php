@@ -41,25 +41,6 @@
 		<h4>Who can attend a CCG run?</h4>
 		<p>Everyone may join us at our runs as long as they follow our rule and guidelines.</p>
 
-		<h4>Upcoming Events</h4>
-		<div class="col-xs-12">
-			<?php
-			$event_thread = $ccg->get_ttr_var('event_thread');
-			$curl = curl_init();
-			//set it to point at the event list
-			curl_setopt($curl, CURLOPT_URL, "https://www.mmocentralforums.com/forums/showpost.php?p={$event_thread}");
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			$output = curl_exec($curl);
-			curl_close($curl);
-			preg_match("|<font size=\"5\"><b>Event List</b></font><br />(.*)<font size=\"5\"><b>End Event List</b></font>|s", $output, $match);
-			$event_list = $match[0];
-			$search = "<font size=\"5\"><b>Event List</b></font><br />";
-			$event_list = str_replace($search, "", $event_list);
-			$search = "<font size=\"5\"><b>End Event List</b></font>";
-			$event_list = str_replace($search, "", $event_list);
-			echo $event_list;
-			?>
-		</div>
 	</div>
 	<div class="col-xs-12 col-sm-4 col-md-3">
 		<h4>Strategy Guides</h4>
