@@ -49,6 +49,11 @@ ul {
     padding-bottom: 6px;
 }
 
+#header_logo {
+  height: 150px;
+  width: 150px;
+}
+
 #banner {
     background: url(../images/ccg_bg.png) center;
     background-size: cover;

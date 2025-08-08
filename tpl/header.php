@@ -36,7 +36,7 @@
     <div class="container" id="banner">
         <div class="row">
             <div class="col-xs-12 text-center" id="logo">
-                <img src="images/ccg_logo.png" title="Cold Callers Guild" alt="Cold Callers Guild" />
+                <img src="images/CCG_Logo_2025_Final.webp" id="header_logo" title="Cold Callers Guild" alt="Cold Callers Guild" />
             </div>
         </div>
     </div>
